@@ -499,7 +499,7 @@ function ProductDetail() {
                       )} taPoint3 text-[22px] text-[#757575]`}
                     ></AiOutlinePlus> */}
                     <div
-                      class={`${togglerColorsDivPlusIcon.join(
+                      className={`${togglerColorsDivPlusIcon.join(
                         " "
                       )} taPoint3 w-[20px] h-[20px] cross down`}
                     ></div>
@@ -542,7 +542,7 @@ function ProductDetail() {
                       )} taPoint3 text-[22px] text-[#757575]`}
                     ></AiOutlinePlus> */}
                      <div
-                      class={`${togglerSheilaColorsDivPlusIcon.join(
+                      className={`${togglerSheilaColorsDivPlusIcon.join(
                         " "
                       )} taPoint3 w-[20px] h-[20px] cross down`}
                     ></div>
