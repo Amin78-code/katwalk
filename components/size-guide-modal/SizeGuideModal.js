@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import logoSquare from "../../assets/images/logo/logo-square.png";
 import vat from "../../assets/images/logo/vat.png";
-import styles from "./sizeGuideModal.module.css";
+// import styles from "./sizeGuideModal.module.css";
 import sizeGuideModalImage from "../../assets/images/hero-image.jpg";
 import sizGuide from "../../assets/images/size-guide.jpg";
 import {
