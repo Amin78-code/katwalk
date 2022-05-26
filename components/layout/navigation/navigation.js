@@ -345,6 +345,11 @@ function Navigation() {
         </div>
         <div className="block       lg:hidden">
           <FaBars onClick={() => navigationToggler()} className="text-[20px]" />
+          {/* <div class="menu-icon openn" id="menu-icon">
+              <div class="menu-icon-line"></div>
+              <div class="menu-icon-line"></div>
+              <div class="menu-icon-line"></div>
+          </div> */}
         </div>
 
         {/* to show */}

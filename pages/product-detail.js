@@ -10,9 +10,7 @@ import img2 from "../assets/images/products/orange-1/img2.jpg";
 import img3 from "../assets/images/products/orange-1/img3.jpg";
 import img4 from "../assets/images/products/orange-1/img4.jpg";
 import ColorBox from "../components/color-box/colorBox";
-import { BsRulers, BsChevronDown } from "react-icons/bs";
-import { IoShareSocialOutline } from "react-icons/io5";
-import { AiOutlinePlus } from "react-icons/ai";
+import { BsChevronDown } from "react-icons/bs";
 import ProductSlider from "../components/product-slider/product-slider";
 import OtherProducts from "../components/other-products/otherProducts";
 import styles from "../components/productDetails.module.css";
@@ -1176,7 +1174,7 @@ function ProductDetail() {
           ""
         )}
 
-        {/* <MessageBox /> */}
+        <MessageBox />
       </Layout>
     </>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { data } from "autoprefixer";
 import styles from "./productSlider.module.css";
@@ -53,7 +53,7 @@ function ProductSlider({ data }) {
   return (
     <>
       <div className="relative">
-        <div className="my-icon heart-for-product-detail w-[25px] h-[25px] cursor-pointer absolute right-[10px] top-[10px] z-[1] bgAllIcon bg-[left_-3px_top_-69px]"></div>
+        <div className="my-icon heart-for-product-detail w-[25px] h-[25px] cursor-pointer absolute right-[14px] top-[6px] z-[1] bgAllIcon bg-[left_-3px_top_-69px]"></div>
         <Slider {...settings}>
           {data.map((value, index) => {
             return (

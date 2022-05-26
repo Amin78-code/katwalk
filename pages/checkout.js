@@ -11,8 +11,6 @@ import stcPay from "../assets/images/payment-methods/stc-pay.png";
 import Features from "../components/features/features";
 import HeadingAndText from "../components/heading-and-text/headingAndText";
 import ColorBox from "../components/color-box/colorBox";
-// import { BsPlusLg, BsRulers, BsChevronDown } from "react-icons/bs";
-// import { IoShareSocialOutline } from "react-icons/io5";
 import ProductSlider from "../components/product-slider/product-slider";
 import { IoCloseOutline } from "react-icons/io5";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";

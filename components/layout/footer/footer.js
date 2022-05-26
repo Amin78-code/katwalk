@@ -10,7 +10,7 @@ function Footer() {
     <>
       <footer className="w-[100%] h-[90px] bg-[#c53a19] py-[15px] flex justify-between px-[3%]">
         <div className="flex  items-center">
-          <div className="max-w-[80px] mr-[0px]       sm:max-w-[65px] sm:mr-[10px] md:mr-[50px]">
+          <div className={`${styles.image_div} max-w-[80px] mr-[0px]       sm:max-w-[65px] sm:mr-[10px] md:mr-[50px]`}>
             <span className="image_container">
               <Image src={logoSquare} alt="image" />
             </span>
@@ -99,10 +99,10 @@ function Footer() {
           </ul>
         </div>
         <div className="flex justify-end  items-end sm:items-center">
-          <p className="work-regular text-[#fff] text-[10px] tracking-[0.05em] uppercase cursor-pointer pr-[20px] pb-[4px] text-right     sm:text-left sm:text-[12px] sm:pb-[0]">
+          <p className={`${styles.footer_right_div} work-regular text-[#fff] text-[10px] tracking-[0.05em] uppercase cursor-pointer pr-[20px] pb-[4px] text-right     sm:text-left sm:text-[12px] sm:pb-[0]`}>
             © KATWALK 2021 CR No. 2062617591 VAT No. 310401691200003
           </p>
-          <div className="max-w-[40px] mt-[5px] mr-[10px]     sm:mr-[25px] sm:max-w-[45px]">
+          <div className={`${styles.right_img_div} max-w-[40px] mt-[5px] mr-[10px]     sm:mr-[25px] sm:max-w-[45px]`}>
             <span className="image_container">
               <Image src={vat} className="cursor-pointer" alt="image" />
             </span>

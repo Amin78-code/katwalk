@@ -11,7 +11,7 @@ function ProductCard({ data, newTag }) {
         >
       <div className="my-icon heart-for-product-detail w-[25px] h-[25px] cursor-pointer absolute right-[32px] top-[22px] z-[1] bgAllIcon bg-[left_-3px_top_-69px]"></div>
           <a>
-            <div className="w-[100%] max-h-[530px] relative">
+            <div className="w-[100%] max-h-[530px] relative     2xl:max-h-[unset]">
               <span className="image_container">
                 <Image src={data.img} alt="image" />
               </span>
