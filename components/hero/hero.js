@@ -16,8 +16,7 @@ function Hero() {
       >
         <div className={`${styles.bg_img_div} absolute w-[100%] top-[-30px] bottom-0`}>
           <span className="image_container">
-            {/* <ImgLazyLoad src={heroImage} alt={"Hero image"} classes={""} /> */}
-            <ImgLazyLoad/>
+            <ImgLazyLoad src={heroImage} alt={"Hero image"} classes={""} />
           </span>
         </div>
         <div className="text-center pb-[60px] z-[0]">

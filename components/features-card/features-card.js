@@ -11,7 +11,6 @@ function FeaturesCard({ data }) {
       >
         <div className="max-w-[80px] mx-auto">
           <span className="image_container">
-            {/* <Image src={data.img} alt="image" /> */}
             <ImgLazyLoad src={data.img} alt={"image"} classes={""} />
           </span>
         </div>
