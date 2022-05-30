@@ -18,6 +18,107 @@ import ColorFilter from "../color-filter/colorFilter";
 import PriceFilter from "../price-filter/priceFilter";
 import SortByFilter from "../sort-by-filter/sortByFilter";
 
+const allDesigners = [
+  {
+    alphabet: "C",
+    designers: ["Clue"],
+  },
+  {
+    alphabet: "E",
+    designers: ["Estilo Designs"],
+  },
+  {
+    alphabet: "F",
+    designers: ["Fouz Couture", "Fourteen Ten"],
+  },
+  {
+    alphabet: "G",
+    designers: ["Gmash"],
+  },
+
+  {
+    alphabet: "K",
+    designers: ["Kaf By Kaf"],
+  },
+
+  {
+    alphabet: "M",
+    designers: ["Maliha", "Muna Mattar"],
+  },
+
+  {
+    alphabet: "N",
+    designers: ["Nada Line", "Nakhlah"],
+  },
+
+  {
+    alphabet: "R",
+    designers: ["Raw Mestika"],
+  },
+
+  {
+    alphabet: "Z",
+    designers: ["Zahra Line"],
+  },
+
+  {
+    alphabet: "",
+    designers: ["ثمانية", "ولاء كاظم"],
+  },
+];
+const allSizes = [
+  "50",
+  "52",
+  "54",
+  "56",
+  "58",
+  "60",
+  "14 UK size",
+  "Free size",
+];
+const allPriceRanges = [
+  "SAR 500 - 1000",
+  "SAR 10000 - 1500",
+  "SAR 1500 - 2000",
+  "> SAR 2000",
+];
+const allColors = {
+  group1: [
+    {
+      name: "gray",
+      colorCode: "bg-[#808080]",
+    },
+    {
+      name: "black",
+      colorCode: "bg-[#000000]",
+    },
+    {
+      name: "pink",
+      colorCode: "bg-[#FFC0CB]",
+    },
+  ],
+  group2: [
+    {
+      name: "Dark Green",
+      colorCode: "bg-[#006400]",
+    },
+    {
+      name: "BurlyWood",
+      colorCode: "bg-[#DEB887]",
+    },
+    {
+      name: "DardkGolderod",
+      colorCode: "bg-[#B8860B]",
+    },
+  ],
+};
+const sortByMethods = [
+  "What's New",
+  "Best Seller",
+  "Price from high to low",
+  "Price from low to hight",
+];
+
 function ShopFilters({ forDesigner }) {
   const category_dropdown = useRef("");
   const size_dropdown = useRef("");
@@ -26,127 +127,117 @@ function ShopFilters({ forDesigner }) {
   const price_dropdown = useRef("");
   const sort_by_dropdown = useRef("");
 
-  const allDesigners = [
-    {
-      alphabet: "C",
-      designers: ["Clue"],
-    },
-    {
-      alphabet: "E",
-      designers: ["Estilo Designs"],
-    },
-    {
-      alphabet: "F",
-      designers: ["Fouz Couture", "Fourteen Ten"],
-    },
-    {
-      alphabet: "G",
-      designers: ["Gmash"],
-    },
+  const designerChevron = useRef(null);
+  const sizeChevron = useRef(null);
+  const colorChevron = useRef(null);
+  const priceChevron = useRef(null);
+  const sortByChevron = useRef(null);
+  const categoryChevron = useRef(null);
 
-    {
-      alphabet: "K",
-      designers: ["Kaf By Kaf"],
-    },
+  const [currectSelectedSize, setCurrectSelectedSize] = useState("");
+  const [currectSelectedColor, setCurrectSelectedColor] = useState("");
+  const [currectSelectedPrice, setCurrectSelectedPrice] = useState("");
+  const [currectSelectedSortBy, setCurrectSelectedSortBy] = useState("");
 
-    {
-      alphabet: "M",
-      designers: ["Maliha", "Muna Mattar"],
-    },
-
-    {
-      alphabet: "N",
-      designers: ["Nada Line", "Nakhlah"],
-    },
-
-    {
-      alphabet: "R",
-      designers: ["Raw Mestika"],
-    },
-
-    {
-      alphabet: "Z",
-      designers: ["Zahra Line"],
-    },
-
-    {
-      alphabet: "",
-      designers: ["ثمانية", "ولاء كاظم"],
-    },
-  ];
-  const allSizes = [
-    "50",
-    "52",
-    "54",
-    "56",
-    "58",
-    "60",
-    "14 UK size",
-    "Free size",
-  ];
-  const allPriceRanges = [
-    "SAR 500 - 1000",
-    "SAR 10000 - 1500",
-    "SAR 1500 - 2000",
-    "> SAR 2000",
-  ];
-  const allColors = {
-    group1: [
-      {
-        name: "gray",
-        colorCode: "bg-[#808080]",
-      },
-      {
-        name: "black",
-        colorCode: "bg-[#000000]",
-      },
-      {
-        name: "pink",
-        colorCode: "bg-[#FFC0CB]",
-      },
-    ],
-    group2: [
-      {
-        name: "Dark Green",
-        colorCode: "bg-[#006400]",
-      },
-      {
-        name: "BurlyWood",
-        colorCode: "bg-[#DEB887]",
-      },
-      {
-        name: "DardkGolderod",
-        colorCode: "bg-[#B8860B]",
-      },
-    ],
+  const choosingFilterOption = (selectedOption, filterName) => {
+    if (filterName == "sizeFilter") {
+      setCurrectSelectedSize(selectedOption);
+    } else if (filterName == "colorFilter") {
+      setCurrectSelectedSize(selectedOption);
+    } else if (filterName == "prizeFilter") {
+      setCurrectSelectedPrice(selectedOption);
+    } else if (filterName == "sortByFilter") {
+      setCurrectSelectedSortBy(selectedOption);
+    }
   };
-  const sortByMethods = [
-    "What's New",
-    "Best Seller",
-    "Price from high to low",
-    "Price from low to hight",
-  ];
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      category_dropdown.current.classList.remove("f-in");
+      size_dropdown.current.classList.remove("f-in");
+      designer_dropdown.current.classList.remove("f-in");
+      color_dropdown.current.classList.remove("f-in");
+      price_dropdown.current.classList.remove("f-in");
+      sort_by_dropdown.current.classList.remove("f-in");
+
+      categoryChevron.current.classList.remove("rotate180b");
+
+      sizeChevron.current.classList.remove("rotate180b");
+
+      priceChevron.current.classList.remove("rotate180b");
+
+      designerChevron.current.classList.remove("rotate180b");
+
+      colorChevron.current.classList.remove("rotate180b");
+
+      sortByChevron.current.classList.remove("rotate180b");
+    });
+  }, "");
 
   function openDropdown(dropdownName) {
-    if (category_dropdown.current.classList.contains("f-in")) {
-      category_dropdown.current.classList.remove("f-in");
+    if (category_dropdown !== dropdownName) {
+      if (category_dropdown.current.classList.contains("f-in")) {
+        category_dropdown.current.classList.remove("f-in");
+        categoryChevron.current.classList.toggle("rotate180b");
+      }
     }
-    if (size_dropdown.current.classList.contains("f-in")) {
-      size_dropdown.current.classList.remove("f-in");
+
+    if (size_dropdown !== dropdownName) {
+      if (size_dropdown.current.classList.contains("f-in")) {
+        size_dropdown.current.classList.remove("f-in");
+        sizeChevron.current.classList.toggle("rotate180b");
+      }
     }
-    if (designer_dropdown.current.classList.contains("f-in")) {
-      designer_dropdown.current.classList.remove("f-in");
+
+    if (designer_dropdown !== dropdownName) {
+      if (designer_dropdown.current.classList.contains("f-in")) {
+        designer_dropdown.current.classList.remove("f-in");
+        designerChevron.current.classList.toggle("rotate180b");
+      }
     }
-    if (color_dropdown.current.classList.contains("f-in")) {
-      color_dropdown.current.classList.remove("f-in");
+    if (color_dropdown !== dropdownName) {
+      if (color_dropdown.current.classList.contains("f-in")) {
+        color_dropdown.current.classList.remove("f-in");
+        colorChevron.current.classList.toggle("rotate180b");
+      }
     }
-    if (price_dropdown.current.classList.contains("f-in")) {
-      price_dropdown.current.classList.remove("f-in");
+    if (price_dropdown !== dropdownName) {
+      if (price_dropdown.current.classList.contains("f-in")) {
+        price_dropdown.current.classList.remove("f-in");
+        priceChevron.current.classList.toggle("rotate180b");
+      }
     }
-    if (sort_by_dropdown.current.classList.contains("f-in")) {
-      sort_by_dropdown.current.classList.remove("f-in");
+    if (sort_by_dropdown !== dropdownName) {
+      if (sort_by_dropdown.current.classList.contains("f-in")) {
+        sort_by_dropdown.current.classList.remove("f-in");
+
+        sortByChevron.current.classList.toggle("rotate180b");
+      }
     }
-    dropdownName.current.classList.add("f-in");
+    if (dropdownName.current.classList.contains("f-in") == true) {
+      dropdownName.current.classList.remove("f-in");
+    } else {
+      dropdownName.current.classList.add("f-in");
+    }
+
+    if (category_dropdown == dropdownName) {
+      categoryChevron.current.classList.toggle("rotate180b");
+    }
+    if (size_dropdown == dropdownName) {
+      sizeChevron.current.classList.toggle("rotate180b");
+    }
+    if (designer_dropdown == dropdownName) {
+      designerChevron.current.classList.toggle("rotate180b");
+    }
+    if (color_dropdown == dropdownName) {
+      colorChevron.current.classList.toggle("rotate180b");
+    }
+    if (price_dropdown == dropdownName) {
+      priceChevron.current.classList.toggle("rotate180b");
+    }
+    if (sort_by_dropdown == dropdownName) {
+      sortByChevron.current.classList.toggle("rotate180b");
+    }
   }
 
   return (
@@ -193,13 +284,17 @@ function ShopFilters({ forDesigner }) {
           <div className={`${styles.all_filters_div} flex`}>
             <div
               className={`${styles.active} single-filter flex-1 relative cursor-pointer`}
-              onClick={() => openDropdown(category_dropdown)}
             >
-              <div className={`flex justify-between items-center`}>
+              <div
+                className={`flex justify-between items-center`}
+                onClick={() => openDropdown(category_dropdown)}
+              >
                 <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
                   category
                 </p>
-                <IoChevronDown className="mr-[10px]" />
+                <div ref={categoryChevron} className="taPoint3">
+                  <IoChevronDown className="mr-[10px]" />
+                </div>
               </div>
               <div
                 className={`  w-[300px] border-[#fbf1e8] border-[1px] absolute z-[2] bg-[#fff] f-out`}
@@ -366,15 +461,17 @@ function ShopFilters({ forDesigner }) {
                 </div>
               </div>
             </div>
-            <div
-              className="flex-1 single-filter relative cursor-pointer"
-              onClick={() => openDropdown(designer_dropdown)}
-            >
-              <div className={`flex justify-between items-center`}>
+            <div className="flex-1 single-filter relative cursor-pointer">
+              <div
+                className={`flex justify-between items-center`}
+                onClick={() => openDropdown(designer_dropdown)}
+              >
                 <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
                   designers
                 </p>
-                <IoChevronDown className="mr-[10px]" />
+                <div ref={designerChevron} className="taPoint3">
+                  <IoChevronDown className="mr-[10px]" />
+                </div>
               </div>
               <DesignerFilter
                 designer_dropdown={designer_dropdown}
@@ -389,9 +486,17 @@ function ShopFilters({ forDesigner }) {
                 <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
                   size
                 </p>
-                <IoChevronDown className="mr-[10px]" />
+                <div ref={sizeChevron} className="taPoint3">
+                  <IoChevronDown className="mr-[10px]" />
+                </div>
               </div>
-              <SizeFilter size_dropdown={size_dropdown} data={allSizes} />
+              <SizeFilter
+                size_dropdown={size_dropdown}
+                data={allSizes}
+                choosingFilterOption={choosingFilterOption}
+                currectSelected={currectSelectedSize}
+                filterName={"sizeFilter"}
+              />
             </div>
             <div
               className="flex-1 single-filter relative cursor-pointer"
@@ -401,9 +506,17 @@ function ShopFilters({ forDesigner }) {
                 <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
                   color
                 </p>
-                <IoChevronDown className="mr-[10px]" />
+                <div ref={colorChevron} className="taPoint3">
+                  <IoChevronDown className="mr-[10px]" />
+                </div>
               </div>
-              <ColorFilter color_dropdown={color_dropdown} data={allColors} />
+              <ColorFilter
+                color_dropdown={color_dropdown}
+                data={allColors}
+                choosingFilterOption={choosingFilterOption}
+                currectSelected={currectSelectedColor}
+                filterName={"colorFilter"}
+              />
             </div>
             <div
               className="flex-1 single-filter relative cursor-pointer"
@@ -413,11 +526,16 @@ function ShopFilters({ forDesigner }) {
                 <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
                   price
                 </p>
-                <IoChevronDown className="mr-[10px]" />
+                <div ref={priceChevron} className="taPoint3">
+                  <IoChevronDown className="mr-[10px]" />
+                </div>
               </div>
               <PriceFilter
                 price_dropdown={price_dropdown}
                 data={allPriceRanges}
+                choosingFilterOption={choosingFilterOption}
+                currectSelected={currectSelectedPrice}
+                filterName={"prizeFilter"}
               />
             </div>
             <div
@@ -428,11 +546,16 @@ function ShopFilters({ forDesigner }) {
                 <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
                   sorty by
                 </p>
-                <IoChevronDown className="mr-[10px]" />
+                <div ref={sortByChevron} className="taPoint3">
+                  <IoChevronDown className={`mr-[10px]`} />
+                </div>
               </div>
               <SortByFilter
                 sort_by_dropdown={sort_by_dropdown}
                 data={sortByMethods}
+                choosingFilterOption={choosingFilterOption}
+                currectSelected={currectSelectedSortBy}
+                filterName={"sortByFilter"}
               />
             </div>
           </div>

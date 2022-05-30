@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./featuresCard.module.css";
+import ImgLazyLoad from "../img-lazy-load/img-lazy-load";
 
 function FeaturesCard({ data }) {
   return (
@@ -10,7 +11,8 @@ function FeaturesCard({ data }) {
       >
         <div className="max-w-[80px] mx-auto">
           <span className="image_container">
-            <Image src={data.img} alt="image" />
+            {/* <Image src={data.img} alt="image" /> */}
+            <ImgLazyLoad src={data.img} alt={"image"} classes={""} />
           </span>
         </div>
         <h6 className="work-regular text-[#111111] text-[15px] leading-[1.5] tracking-[0.5px] font-[600] mt-[10px]">

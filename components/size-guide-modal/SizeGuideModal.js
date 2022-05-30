@@ -8,6 +8,7 @@ import sizGuide from "../../assets/images/size-guide.jpg";
 import {
   IoCloseOutline
 } from "react-icons/io5";
+import ImgLazyLoad from "../img-lazy-load/img-lazy-load";
 
 function SizeGuideModal({toggleSizeGuideModal}) {
   return (
@@ -17,7 +18,8 @@ function SizeGuideModal({toggleSizeGuideModal}) {
           <IoCloseOutline className="absolute text-[25px] right-[17px] top-[20px] z-[25]" onClick={toggleSizeGuideModal} />
           <div className="overflow-auto max-h-[82vh] pb-[20px]">
             <span className="image_container">
-              <Image src={sizGuide} alt="image" />
+              {/* <Image src={sizGuide} alt="image" /> */}
+              <ImgLazyLoad src={sizGuide} alt={"image"} classes={""} />
             </span>
           </div>
         </div>

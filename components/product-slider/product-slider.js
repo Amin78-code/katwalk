@@ -6,13 +6,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import allIcons from "../../assets/images/icons/all-icons.svg";
+import ImgLazyLoad from "../img-lazy-load/img-lazy-load";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", width: "50px", height: "60px" }}
+      style={{ ...style, display: "block", width: "35px", height: "50px" }}
       onClick={onClick}
     ></div>
   );
@@ -23,7 +24,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", width: "50px", height: "60px" }}
+      style={{ ...style, display: "block", width: "35px", height: "50px" }}
       onClick={onClick}
     />
   );
@@ -59,7 +60,8 @@ function ProductSlider({ data }) {
             return (
               <div key={index}>
                 <span className="image_container">
-                  <Image src={value.image} alt="image" />
+                  {/* <Image src={value.image} alt="image" /> */}
+                  <ImgLazyLoad src={value.image} alt={"image"} classes={""} />
                 </span>
               </div>
             );

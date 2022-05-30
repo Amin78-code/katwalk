@@ -9,6 +9,7 @@ import loginBgImgMob from "../../assets/images/login-bg-mob.jpg";
 import Features from "../../components/features/features";
 import HeadingAndText from "../../components/heading-and-text/headingAndText";
 import styles from "../../components/login.module.css";
+import ImgLazyLoad from "../../components/img-lazy-load/img-lazy-load";
 
 function Login() {
   return (
@@ -20,12 +21,14 @@ function Login() {
       >
         <div className={`${styles.login_bg_img_div} absolute w-[100%] h-[100%] z-[-1] hidden     sm:block`}>
           <span className="image_container ">
-            <Image src={loginBgImg} alt="image" /> 
+            {/* <Image src={loginBgImg} alt="image" />  */}
+            <ImgLazyLoad src={loginBgImg} alt={"image"} classes={''} />
           </span>
         </div>
         <div className={`${styles.login_bg_img_div} absolute w-[100%] h-[100%] z-[-1] block      sm:hidden`}>
           <span className="image_container "> 
-            <Image src={loginBgImgMob} alt="image" />
+            {/* <Image src={loginBgImgMob} alt="image" /> */}
+            <ImgLazyLoad src={loginBgImgMob} alt={"image"} classes={''} />
           </span>
         </div>
         <div className="w-[100%] mx-auto h-[210px] bg-[#000000bf] p-[25px] mt-[130px] ml-[15px] mr-[15px]     sm:ml-[50px] sm:mr-[50px] sm:w-[90%] lg:w-[34%] lg:mr-[60px]">

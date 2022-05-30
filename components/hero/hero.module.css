@@ -23,8 +23,10 @@
   z-index: -1;
 }
 .hero_section {
-  /* height: calc(100vh - 60px); */
   height: 655px;
+}
+.bg_img_div {
+  height: calc(100% + 20px);
 }
 @media (min-width: 640px) {
   .hero_section {
@@ -38,6 +40,6 @@
 }
 @media (min-width: 1024px) {
   .hero_section {
-    height: 630px;
+    height: 640px;
   }
 }

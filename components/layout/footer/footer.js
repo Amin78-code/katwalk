@@ -8,7 +8,7 @@ import Link from "next/link";
 function Footer() {
   return (
     <>
-      <footer className="w-[100%] h-[90px] bg-[#c53a19] py-[15px] flex justify-between px-[3%]">
+      <footer className="w-[100%] h-[94px] bg-[#c53a19] py-[15px] flex justify-between px-[3%]">
         <div className="flex  items-center">
           <div className={`${styles.image_div} max-w-[80px] mr-[0px]       sm:max-w-[65px] sm:mr-[10px] md:mr-[50px]`}>
             <span className="image_container">

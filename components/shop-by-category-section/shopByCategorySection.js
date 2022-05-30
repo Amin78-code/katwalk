@@ -3,6 +3,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ImgLazyLoad from "../img-lazy-load/img-lazy-load";
 
 function ShopByCategorySection({ data }) {
   const settings = {
@@ -32,7 +33,7 @@ function ShopByCategorySection({ data }) {
   return (
     <>
   
-      <section className="h-[auto] pt-[30px] pb-[0px]      sm:pt-[50px] sm:pb-[20px] lg:py-[50px] lg:h-[450px]">
+      <section className="h-[auto] pt-[30px] pb-[0px]      sm:pt-[50px] sm:pb-[20px] lg:pt-[40px] lg:pb-[60px] lg:h-[450px]">
         <div className="container flex justify-start flex-col px-[0]     lg:flex-row lg:px-[20px]">
           <div className="w-[100%] pr-[20px]      lg:w-[44%]">
             <h2 className="fahkwang-light text-[#231F20] text-[22px] leading-[1.1] uppercase pb-[5px] mb-[10px]     sm:text-[28px]">
@@ -55,10 +56,10 @@ function ShopByCategorySection({ data }) {
                   >
                     <div className="w-[100%]">
                       <span className="image_container transition-all duration-300">
-                        <Image src={value.img} alt="image" />
+                        <ImgLazyLoad src={value.img} alt={"image"} classes={""} />
                       </span>
                     </div>
-                    <h5 className="fahkwang-light text-[12px] uppercase text-center mt-[3px]      sm:text-[14px] sm:mt-[8px]">
+                    <h5 className="fahkwang-light text-[12px] uppercase text-center mt-[3px]      sm:text-[14px] sm:mt-[3px]">
                       {value.name}
                     </h5>
                   </div>

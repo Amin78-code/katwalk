@@ -26,6 +26,7 @@ function Navigation() {
   const [searchDesktopToggleClasses, setSearchDesktopToggleClasses] = useState(
     []
   );
+  const [isCartEmpty, setIsCartEmpty] = useState(true);
   const navigationToggler = () => {
     if (!togglerClasses.includes("visibility-visible")) {
       setTogglerClasses(["visibility-visible"]);
@@ -91,7 +92,10 @@ function Navigation() {
   };
   return (
     <>
-      <nav className="fixed top-0 w-[100%] h-[60px] bg-[#fff] px-[3%] flex justify-between items-center z-[3] drop-shadow-[0_3px_10px_rgba(0,0,0,0.1)]     lg:h-[80px]">
+      <nav
+        id="navbar"
+        className="fixed top-0 w-[100%] h-[60px] bg-[#fff] px-[3%] flex justify-between items-center z-[3] drop-shadow-[0_3px_10px_rgba(0,0,0,0.1)]     lg:h-[80px]"
+      >
         <div className="max-w-[115px] pt-[8px]     sm:max-w-[125px] sm:pt-[0]">
           <Link href="/">
             <span className="image_container">
@@ -100,19 +104,19 @@ function Navigation() {
           </Link>
         </div>
         <ul
-          className={`${styles.middle_menu} flex justify-center flex-wrap px-[20px] relative hidden        lg:px-[0] lg:flex`}
+          className={`${styles.middle_menu} flex justify-center flex-wrap px-[20px] pb-[4px] ml-[15px] relative hidden        lg:px-[0] lg:flex`}
         >
           {/* <li>
             <a
               href="#"
-              className="work-regular text-[#000] text-[13px] leading-[15px] uppercase px-[10px]"
+              className="work-regular text-[#000] text-[13px] leading-[15px] tracking-[0.5px] uppercase px-[8px]"
             >
               Ready for shipping
             </a>
           </li> */}
           <li className={`${styles.menu_with_dropdown}`}>
             <Link href="/shop">
-              <a className="work-regular text-[#000] text-[13px] leading-[15px] uppercase px-[10px]">
+              <a className="work-regular text-[#000] text-[13px] leading-[15px] tracking-[0.5px] uppercase px-[8px]">
                 STYLES
               </a>
             </Link>
@@ -172,7 +176,7 @@ function Navigation() {
           </li>
           <li className={`${styles.menu_with_dropdown}`}>
             <Link href="/shop">
-              <a className="work-regular text-[#000] text-[13px] leading-[15px] uppercase px-[10px]">
+              <a className="work-regular text-[#000] text-[13px] leading-[15px] tracking-[0.5px] uppercase px-[8px]">
                 OCCASIONS
               </a>
             </Link>
@@ -202,7 +206,7 @@ function Navigation() {
           </li>
           <li className={`${styles.menu_with_dropdown}`}>
             <Link href="/shop">
-              <a className="work-regular text-[#000] text-[13px] leading-[15px] uppercase px-[10px]">
+              <a className="work-regular text-[#000] text-[13px] leading-[15px] tracking-[0.5px] uppercase px-[8px]">
                 SHOP ALL
               </a>
             </Link>
@@ -239,7 +243,7 @@ function Navigation() {
           </li>
           <li>
             <Link href="/designers">
-              <a className="work-regular text-[#000] text-[13px] leading-[15px] uppercase px-[10px]">
+              <a className="work-regular text-[#000] text-[13px] leading-[15px] tracking-[0.5px] uppercase px-[8px]">
                 DESIGNERS
               </a>
             </Link>
@@ -247,19 +251,19 @@ function Navigation() {
           <li>
             <a
               href="#"
-              className="work-regular text-[#000] text-[13px] leading-[15px] uppercase px-[10px]"
+              className="work-regular text-[#000] text-[13px] leading-[15px] tracking-[0.5px] uppercase px-[8px]"
             >
               JOIN KATWALK!
             </a>
           </li>
         </ul>
         <div
-          className={`${styles.menu_right_div} flex items-center ml-[80px]     sm:ml-[0]`}
+          className={`${styles.menu_right_div} flex items-center ml-[80px] pb-[0px]     sm:pb-[4px] sm:ml-[0]`}
         >
-          <div className="pr-[10px] order-2     sm:order-[unset]">
+          <div className="pr-[6px] order-2 pb-[4px]     sm:order-[unset]">
             {/* search for for desktop */}
             <div
-              className="relative hidden      lg:block"
+              className="relative hidden       lg:block"
               onClick={() => searchDesktopToggler()}
             >
               <input
@@ -295,7 +299,7 @@ function Navigation() {
               ></div>
 
               <div
-                className={`${styles.card_sm_box} card-sm-box min-w-[110px] bg-[#fff] w-[322px] p-[20px] pb-[30px] border-[#fbf1e8] border-[1px] absolute top-[30px] left-[50%] translate-x-[-50%] hidden`}
+                className={`${styles.card_sm_box} card-sm-box min-w-[110px] bg-[#fff] w-[322px] p-[20px] border-[#fbf1e8] border-[1px] absolute top-[30px] left-[50%] translate-x-[-50%] hidden`}
               >
                 <div className="border-b-[1px] border-[#e2e5ec] w-[100%] text-center flex justify-end">
                   <p className="work-regular text-[#000000b8] text-[12px] mb-[10px] capitalize">
@@ -303,10 +307,52 @@ function Navigation() {
                   </p>
                 </div>
                 <div>
-                  <div className="text-center">
-                    <p className="work-regular text-[#000000] text-[13px] mt-[10px]">
-                      Your Bag is empty
-                    </p>
+                  <div className="text-cente r">
+                    {isCartEmpty == false ? (
+                      <p className="work-regular text-[#000000] text-[13px] mt-[10px] text-center">
+                        Your Bag is empty
+                      </p>
+                    ) : (
+                      <div className="flex flex-col justify-start relative">
+                        <div className="flex justify-between pt-[20px] pb-[20px] ">
+                          <div className="max-w-[30%] max-h-[70px] px-[5px]">
+                            <span className="image_container">
+                              <Image src={dress1} alt="product image" />
+                            </span>
+                          </div>
+                          <div className="pt-[20px] text-right">
+                            <p className="work-regular text-[13px] leading-[1.5] tracking-[0.5px]">
+                              Floral Embroidery Tulle Sleeve Abaya <br /> Clue
+                            </p>
+                            <p className="work-regular text-[13px] leading-[1.5] mt-[10px] pl-[10px]">
+                              1x SAR 1,030
+                            </p>
+                          </div>
+                          <div className="absolute right-[-5px]">
+                            {/* <IoCloseOutline className="text-[16px] text-[#000] mr-[10px]" /> */}
+                            <div className="w-[21px] h-[19px] cursor-pointer bgAllIcon bg-[left_-22px_top_-37px] tScalePoint5"></div>
+                          </div>
+                        </div>
+
+                        <div className="border-t-[1px] border-[#ededed] flex justify-end">
+                          <p
+                            href="#"
+                            className="work-regular text-[#000] text-[13px] py-[13px] block capitalize pr-[10px]"
+                          >
+                            Subtotal
+                          </p>
+                          <p
+                            href="#"
+                            className="work-regular text-[#000] text-[13px] py-[13px] block uppercase"
+                          >
+                            SAR 1,030
+                          </p>
+                        </div>
+                        <button className="text-[14px] text-[#fff] uppercase bg-[#000] px-[10px] py-[10px]">
+                          <Link href="/checkout">checkout</Link>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -316,11 +362,10 @@ function Navigation() {
               onClick={() => cartToggler()}
               className="text-[20px] cursor-pointer block     lg:hidden"
             /> */}
-            <div
-              className="my-icon bag w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-10px_top_-151px] block     lg:hidden"
-              onClick={() => cartToggler()}
-            ></div>
-            <span className="work-regular text-[12px] ml-[7px]">0</span>
+            <div className="my-icon bag w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-10px_top_-151px] block     lg:hidden"></div>
+            <span className="work-regular text-[12px] ml-[7px] pt-[3px]">
+              1
+            </span>
           </div>
           <div className="px-[8px] flex items-center border-r-[1px] border-[#e2e5ec] hidden       lg:flex">
             {/* <IoHeartOutline className="text-[20px] cursor-pointer" /> */}
@@ -328,7 +373,9 @@ function Navigation() {
               className="my-icon heart w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-1px_top_-385px]"
               onClick={() => cartToggler()}
             ></div>
-            <span className="work-regular text-[12px] ml-[7px]">0</span>
+            <span className="work-regular text-[12px] ml-[7px] pt-[3px]">
+              0
+            </span>
           </div>
           <div className="px-[7px] border-r-[1px] border-[#e2e5ec] hidden       lg:flex">
             {/* <IoPersonOutline className="text-[20px] cursor-pointer" /> */}
@@ -337,19 +384,19 @@ function Navigation() {
               onClick={() => cartToggler()}
             ></div>
           </div>
-          <div className="pl-[0px] pr-[18px] pb-[9px] order-1      sm:order-[unset] sm:pl-[5px] sm:pr-[30px] sm:pb-[0]">
+          <div className="pl-[0px] pr-[18px] pb-[9px] order-1      sm:order-[unset] sm:pl-[5px] sm:pr-[10px] sm:pb-[4px]">
             <a href="#" className="almarai-regular text-[13px] cursor-pointer">
               عربي
             </a>
           </div>
         </div>
         <div className="block       lg:hidden">
-          <FaBars onClick={() => navigationToggler()} className="text-[20px]" />
-          {/* <div class="menu-icon openn" id="menu-icon">
-              <div class="menu-icon-line"></div>
-              <div class="menu-icon-line"></div>
-              <div class="menu-icon-line"></div>
-          </div> */}
+          {/* <FaBars onClick={() => navigationToggler()} className="text-[20px]" /> */}
+          <div onClick={() => navigationToggler()}>
+            <div className="menu-icon-line2"></div>
+            <div className="menu-icon-line2"></div>
+            <div className="menu-icon-line2"></div>
+          </div>
         </div>
 
         {/* to show */}
@@ -603,12 +650,12 @@ function Navigation() {
           ></div>
           <AiOutlineClose className="text-[26px] text-[#fff] absolute top-[15px] right-[20px]" />
           <div
-            className={`mob-menu-white-div h-[100vh] bg-[#fff] px-[20px] py-[20px] absolute translate-x-[140%] border-l-[1px] border-[#fbf1e8]`}
+            className={`mob-menu-white-div h-[100vh] bg-[#fff] px-[20px] pt-[15px] pb-[20px] absolute translate-x-[140%] border-l-[1px] border-[#fbf1e8]`}
           >
             <div className="flex justify-between border-b-[2px] border-[#ededed]">
-              <h6 className="work-regular text-[13px] text-[#1b1b28] capitalize">
-                {/* your bag */}
-                your bag is empty
+              <h6 className="fwl text-[13px] text-[#1b1b28] capitalize pb-[13px]">
+                your bag
+                {/* your bag is empty */}
               </h6>
               <div className="flex justify-end">
                 {/* <IoCloseOutline
@@ -622,7 +669,7 @@ function Navigation() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-start h-[85vh]    hidd en    ">
+            <div className="flex flex-col flex-col justify-between h-[89vh]    hidd en">
               <div className="flex justify-between pt-[20px] pb-[45px]">
                 <div className="max-w-[30%] max-h-[70px] px-[5px]">
                   <span className="image_container">
@@ -643,23 +690,25 @@ function Navigation() {
                 </div>
               </div>
 
-              <div className="border-t-[1px] border-[#ededed] flex justify-between">
-                <p
-                  href="#"
-                  className="work-regular text-[#000] text-[13px] py-[13px] block uppercase"
-                >
-                  Subtotal
-                </p>
-                <p
-                  href="#"
-                  className="work-regular text-[#000] text-[13px] py-[13px] block uppercase"
-                >
-                  SAR 1,030
-                </p>
+              <div className="w-[100%]">
+                <div className="border-t-[1px] border-[#ededed] flex justify-between">
+                  <p
+                    href="#"
+                    className="work-regular text-[#000] text-[13px] py-[13px] block uppercase"
+                  >
+                    Subtotal
+                  </p>
+                  <p
+                    href="#"
+                    className="work-regular text-[#000] text-[13px] py-[13px] block uppercase"
+                  >
+                    SAR 1,030
+                  </p>
+                </div>
+                <button className="w-[100%] text-[14px] text-[#fff] uppercase bg-[#000] px-[10px] py-[10px]">
+                  checkout
+                </button>
               </div>
-              <button className="text-[14px] text-[#fff] uppercase bg-[#000] px-[10px] py-[10px]">
-                checkout
-              </button>
             </div>
           </div>
         </div>

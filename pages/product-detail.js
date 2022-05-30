@@ -18,7 +18,64 @@ import SizeGuideModal from "../components/size-guide-modal/SizeGuideModal";
 import MessageModal from "../components/message-modal/messageModal";
 import MessageBox from "../components/message-box/messageBox";
 
+const basicColors = [
+  {
+    name: "Orange",
+    colorCode: "bg-[#FFA500]",
+  },
+];
+const sheilaColor = [
+  {
+    name: "Dodger Blue",
+    colorCode: "bg-[#1E90FF]",
+  },
+  {
+    name: "Orange",
+    colorCode: "bg-[#FFA500]",
+  },
+  {
+    name: "red",
+    colorCode: "bg-[#ff0000]",
+  },
+];
+
+const selectSize = ["50", "52", "54"];
+
+const selectSheilaLength = ["200cm", "170cm", "150cm"];
+
+const otherProducts = [
+  {
+    img: productImg1,
+    companyName: "Nada Line",
+    productName: "Metallic Print Abaya",
+    price: "760",
+  },
+  {
+    img: productImg2,
+    companyName: "Nada Line",
+    productName: "Black Beaded Embroidery Abaya",
+    price: "1.125",
+  },
+  {
+    img: productImg3,
+    companyName: "Nada Line",
+    productName: "Crinkled Abaya with Printed Pattern",
+    price: "760",
+  },
+  {
+    img: productImg4,
+    companyName: "Nada Line",
+    productName: "Color Block Crinkled Abaya",
+    price: "760",
+  },
+];
+
 function ProductDetail() {
+  const [sheila, setSheila] = useState({});
+  const [basicColor, setBasicColor] = useState({});
+  const [selectedBasicSize, setSelectedBasicSize] = useState("");
+  const [selectedSheilaSize, setSelectedSheilaSize] = useState("");
+
   const productImages = [
     { image: img1 },
     { image: img2 },
@@ -26,8 +83,26 @@ function ProductDetail() {
     { image: img4 },
   ];
 
+  const settingBasicColor = (selectedBasicColor) => {
+    setBasicColor({ ...selectedBasicColor });
+  };
+  const settingSheila = (selectedSheilaColor) => {
+    setSheila({ ...selectedSheilaColor });
+  };
+
+  const settingVariation = (selectedVariation, variationName) => {
+    if (variationName == "basic-size") {
+      setSelectedBasicSize(selectedVariation);
+      sizeToggler();
+    } else if (variationName == "sheila-size") {
+      setSelectedSheilaSize(selectedVariation);
+      sheilaLengthToggler();
+    }
+  };
   const [itemAdded, setItemAdded] = useState("[]");
   const [isSecureCheckout, setIsSecureCheckout] = useState("[]");
+
+  const [isVartiationsSelected, setIsVartiationsSelected] = useState(false);
 
   const [togglerColorsDiv, settogglerColorsDiv] = useState([]);
   const [togglerColorsDivPlusIcon, settogglerColorsDivPlusIcon] = useState([]);
@@ -66,54 +141,6 @@ function ProductDetail() {
 
   const [togglerTab4, settogglerTab4] = useState([]);
   const [togglerTab4PlusIcon, settogglerTab4PlusIcon] = useState([]);
-
-  const basicColor = [
-    {
-      name: "Orange",
-      colorCode: "bg-[#FFA500]",
-    },
-  ];
-  const sheilaColor = [
-    {
-      name: "Dodger Blue",
-      colorCode: "bg-[#1E90FF]",
-    },
-    {
-      name: "Orange",
-      colorCode: "bg-[#FFA500]",
-    },
-    {
-      name: "red",
-      colorCode: "bg-[#ff0000]",
-    },
-  ];
-
-  const otherProducts = [
-    {
-      img: productImg1,
-      companyName: "Nada Line",
-      productName: "Metallic Print Abaya",
-      price: "760",
-    },
-    {
-      img: productImg2,
-      companyName: "Nada Line",
-      productName: "Black Beaded Embroidery Abaya",
-      price: "1.125",
-    },
-    {
-      img: productImg3,
-      companyName: "Nada Line",
-      productName: "Crinkled Abaya with Printed Pattern",
-      price: "760",
-    },
-    {
-      img: productImg4,
-      companyName: "Nada Line",
-      productName: "Color Block Crinkled Abaya",
-      price: "760",
-    },
-  ];
 
   const colorsDivToggler = () => {
     if (!togglerColorsDiv.includes("show-colors")) {
@@ -200,7 +227,6 @@ function ProductDetail() {
     }
   };
   const toggleSizeGuideModal = () => {
-    console.log("called");
     if (!togglerSizeGuideModal.includes("fading-in")) {
       setTogglerSizeGuideModal(["fading-in"]);
     } else {
@@ -434,11 +460,23 @@ function ProductDetail() {
 
   const [listColor, setListColor] = useState([1, 2, 3, 4, 5]);
   const ref = useRef(null);
- 
+
   const color = useRef("");
 
   const addToBag = () => {
-    setItemAdded(true);
+    if (
+      sheila.name == {} ||
+      basicColor.name == {} ||
+      sheila.name == undefined ||
+      basicColor.name == undefined ||
+      selectedBasicSize == "" ||
+      selectedSheilaSize == ""
+    ) {
+      setIsVartiationsSelected(true);
+      setTimeout(()=> setIsVartiationsSelected(false), 3000);
+    } else {
+      setIsSecureCheckout(true);
+    }
   };
 
   const closeItemAdded = () => {
@@ -462,7 +500,7 @@ function ProductDetail() {
             <div className="max-w-[1090p x] w-[100%] product-slider-div     lg:w-[68%]">
               <ProductSlider data={productImages} />
             </div>
-            <div className="product-detail-content-div min-w-[500p x] w-[100%] pl-[50px] pr-[75px]     lg:w-[32%]">
+            <div className="product-detail-content-div min-w-[500p x] w-[100%] pl-[45px] pr-[60px]     lg:w-[32%]">
               <p className="work-regular text-[#1b1b28] text-[12px] tracking-[0.1em] mt-[20px] mb-[10px] hidden      md:block">
                 Home / Abaya / Multicolor Printed Abaya with Fringe Detail
               </p>
@@ -511,9 +549,17 @@ function ProductDetail() {
                   <h6 className="fwb text-[#1b1b28] text-[13px] pt-[10px] pb-[10px]">
                     Color:
                   </h6>
-                  <div className="flex gap-x-[3px] pl-[2px]">
-                    {basicColor.map((value, index) => {
-                      return <ColorBox key={index} data={value} />;
+                  <div className="flex gap-x-[3px] pl-[2px] h-[110px]">
+                    {basicColors.map((value, index) => {
+                      return (
+                        <ColorBox
+                          key={index}
+                          data={value}
+                          settingBasicColor={settingBasicColor}
+                          currectSelectedColor={basicColor}
+                          colorType={"basicColor"}
+                        />
+                      );
                     })}
                   </div>
                 </div>
@@ -539,7 +585,7 @@ function ProductDetail() {
                         " "
                       )} taPoint3 text-[22px] text-[#757575]`}
                     ></AiOutlinePlus> */}
-                     <div
+                    <div
                       className={`${togglerSheilaColorsDivPlusIcon.join(
                         " "
                       )} taPoint3 w-[20px] h-[20px] cross down`}
@@ -558,27 +604,13 @@ function ProductDetail() {
                     {sheilaColor.map((value, index) => {
                       return (
                         <>
-                          <div
+                          <ColorBox
                             key={index}
-                            className={`${styles.color_main_div} `}
-                          >
-                            <div
-                              className={` "w-[83px] m-[2px] color-selected "`}
-                              // onClick={(event) => {
-                              //   handleToggleClassListRef(ref);
-                              //   event.stopPropagation();
-                              //   ref.current = event.target;
-                              //   handleToggleClassListRef(ref);
-                              // }}
-                            >
-                              <div
-                                className={`w-[75px] h-[75px] ${value.colorCode} m-[3px]`}
-                              ></div>
-                              <p className="work-regular text-[12px] leading-[1.2] tracking-[0.5px] pt-[3px] pr-[5px] pb-[5px] pl-[5px] max-w-[81px]">
-                                {value.name}
-                              </p>
-                            </div>
-                          </div>
+                            data={value}
+                            settingSheilaColor={settingSheila}
+                            currectSelectedColor={sheila}
+                            colorType={"sheilaColor"}
+                          />
                         </>
                       );
                     })}
@@ -601,7 +633,9 @@ function ProductDetail() {
                       onClick={() => sizeToggler()}
                     >
                       <p className="fwr h-[40px] leading-[40px] text-[11px] text-[#7e7e7e] capitalize">
-                        select size
+                        {selectedBasicSize && selectedBasicSize !== ""
+                          ? selectedBasicSize
+                          : "select size:"}
                       </p>
 
                       <BsChevronDown
@@ -615,15 +649,17 @@ function ProductDetail() {
                         styles.variation_dropdowns
                       } w-[100%] border-[#fbf1e8] border-[1px] border-b-[0] absolute bg-[#fff] z-[10] hidden`}
                     >
-                      <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                        50
-                      </div>
-                      <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px] active-variation">
-                        52
-                      </div>
-                      <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                        54
-                      </div>
+                      {selectSize.map((value) => {
+                        return (
+                          <Options
+                            key={value + 1}
+                            data={value}
+                            variationName={"basic-size"}
+                            settingVariation={settingVariation}
+                            currectSelectedValue={selectedBasicSize}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -644,7 +680,9 @@ function ProductDetail() {
                       onClick={() => sheilaLengthToggler()}
                     >
                       <p className="fwr h-[40px] leading-[40px] text-[11px] text-[#7e7e7e] capitalize">
-                        select sheila length:
+                        {selectedSheilaSize && selectedSheilaSize !== ""
+                          ? selectedSheilaSize
+                          : "select sheila length:"}
                       </p>
 
                       <BsChevronDown
@@ -658,15 +696,17 @@ function ProductDetail() {
                         styles.variation_dropdowns
                       } w-[100%] border-[#fbf1e8] border-[1px] border-b-[0] absolute bg-[#fff] z-[10] hidden`}
                     >
-                      <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px] active-variation">
-                        200cm
-                      </div>
-                      <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                        170cm
-                      </div>
-                      <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                        150cm
-                      </div>
+                      {selectSheilaLength.map((value) => {
+                        return (
+                          <Options
+                            key={value + 1}
+                            data={value}
+                            variationName={"sheila-size"}
+                            settingVariation={settingVariation}
+                            currectSelectedValue={selectedSheilaSize}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -703,12 +743,12 @@ function ProductDetail() {
                   </div>
                 </div>
 
-                <div className="w-[100% mt-[15px]">
+                <div  className={`${togglerAlterationDiv.join(
+                      " "
+                    )} w-[100%] h-[0] overflow-hidden mt-[15px] taPoint3`}>
                   {/* length */}
                   <div
-                    className={`${togglerAlterationDiv.join(
-                      " "
-                    )} taPoint3 h-[0] overflow-hidden`}
+                    className={`  taPoint3  overflow-hidden`}
                   >
                     <div className="w-[100%} flex items-center mb-[20px]">
                       <div className="min-w-[60px] max-w-[60px]">
@@ -759,12 +799,9 @@ function ProductDetail() {
                       </div>
                     </div>
                   </div>
-
                   {/* bust */}
                   <div
-                    className={`${togglerAlterationDiv.join(
-                      " "
-                    )} taPoint3 h-[0] overflow-hidden`}
+                    className={` taPoint3  overflow-hidden`}
                   >
                     <div className="w-[100%} flex items-center mb-[20px]">
                       <div className="min-w-[60px] max-w-[60px]">
@@ -821,9 +858,7 @@ function ProductDetail() {
 
                   {/* sleeve */}
                   <div
-                    className={`${togglerAlterationDiv.join(
-                      " "
-                    )} taPoint3 h-[0] overflow-hidden`}
+                    className={`  taPoint3  overflow-hidden`}
                   >
                     <div className="w-[100%} flex items-center mb-[20px]">
                       <div className="min-w-[60px] max-w-[60px]">
@@ -1174,9 +1209,29 @@ function ProductDetail() {
           ""
         )}
 
-        <MessageBox />
+        {/* <MessageBox /> */}
       </Layout>
+      {isVartiationsSelected == true ? <MessageBox message={"Please choose all the options"} /> : ""}
     </>
+  );
+}
+
+function Options({
+  data,
+  variationName,
+  settingVariation,
+  currectSelectedValue,
+}) {
+  return (
+    <div
+      key={data + 1}
+      className={` ${
+        currectSelectedValue == data ? "active-variation" : ""
+      } fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px] `}
+      onClick={() => settingVariation(data, variationName)}
+    >
+      {data}
+    </div>
   );
 }
 

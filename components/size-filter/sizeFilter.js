@@ -1,8 +1,13 @@
 import React from "react";
-import styles from './sizeFilter.module.css'
+import styles from "./sizeFilter.module.css";
 
-function SizeFilter({data, size_dropdown}) {
- 
+function SizeFilter({
+  data,
+  size_dropdown,
+  choosingFilterOption,
+  currectSelected,
+  filterName,
+}) {
   return (
     <>
       <div
@@ -15,7 +20,7 @@ function SizeFilter({data, size_dropdown}) {
           </p>
           <div className="flex flex-wrap gap-x-[9px] gap-y-[9px]">
             {data.map((value, index) => {
-              return <SizeFilterItem key={index} data={value} />;
+              return <SizeFilterItem key={index} data={value} filterName={filterName} choosingFilterOption={choosingFilterOption} currectSelected={currectSelected} />;
             })}
           </div>
         </div>
@@ -26,11 +31,15 @@ function SizeFilter({data, size_dropdown}) {
 
 export default SizeFilter;
 
-function SizeFilterItem({ data }) {
+function SizeFilterItem({ data , choosingFilterOption, filterName, currectSelected }) {
+
   return (
     <>
-    {/* ${styles.active} */}
-      <p className={`size-box taPoint3 cursor-pointer fwl w-[48px] h-[48px] border-[#fbf1e8] border-[1px] flex justify-center items-center text-[#1b1b28] text-[13px] leading-[13px] p-[5px] pr-[8px]`}>
+      {/* ${styles.active} */}
+      <p
+        className={` ${currectSelected == data ? styles.active : ""} size-box taPoint3 cursor-pointer fwl w-[48px] h-[48px] border-[#fbf1e8] border-[1px] flex justify-center items-center text-[#1b1b28] text-[13px] leading-[13px] p-[5px] pr-[8px]`}
+        onClick={()=>choosingFilterOption(data, filterName)}
+      >
         {data}
       </p>
     </>

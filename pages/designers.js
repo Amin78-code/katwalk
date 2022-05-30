@@ -39,6 +39,7 @@ import MessageModal from "../components/message-modal/messageModal";
 import ShopFilters from "../components/shop-filters/shopFilters";
 import ProductCard from "../components/product-card/productCard";
 import Link from "next/link";
+import ImgLazyLoad from "../components/img-lazy-load/img-lazy-load";
 
 function Designers() {
   const designers = [
@@ -115,7 +116,8 @@ function Designers() {
                     <Link href="/shop/designer">
                       <a>
                         <div className="w-[100%] h-[100%] mb-[20px]">
-                          <Image src={value.image} alt="image" />
+                          {/* <Image src={value.image} alt="image" /> */}
+                          <ImgLazyLoad src={value.image} alt={"image"} classes={""} />
                         </div>
                         <p className="fwr text-[#000] text-[18px] mb-[10px]">
                           {value.name}

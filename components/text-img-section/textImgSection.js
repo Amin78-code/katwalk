@@ -3,6 +3,7 @@ import Image from "next/image";
 import katwalkBag from "../../assets/images/designers/katwalk-bag.jpg";
 import styles from "./textImgSection.module.css";
 import allIcons from "../../assets/images/icons/all-icons.svg";
+import ImgLazyLoad from "../img-lazy-load/img-lazy-load";
 
 function TextImgSection({ data }) {
   return (
@@ -20,7 +21,8 @@ function TextImgSection({ data }) {
         </div>
         <div className="w-[100%]">
           <span className="image_container">
-            <Image src={data.img} alt="image" />
+            {/* <Image src={data.img} alt="image" /> */}
+            <ImgLazyLoad src={data.img} alt={"image"} classes={""} />
           </span>
         </div>
       </section>

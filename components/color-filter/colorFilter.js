@@ -5,7 +5,9 @@ import vat from "../../assets/images/logo/vat.png";
 import styles from "./colorFilter.module.css";
 import heroImage from "../../assets/images/hero-image.jpg";
 
-function ColorFilter({ data, color_dropdown }) {
+function ColorFilter({ data, color_dropdown,choosingFilterOption,
+  currectSelected,
+  filterName, }) {
   return (
     <>
       <div
