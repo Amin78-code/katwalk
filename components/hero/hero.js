@@ -6,6 +6,7 @@ import styles from "./hero.module.css";
 import heroImage from "../../assets/images/hero-image.jpg";
 import allIcons from "../../assets/images/icons/all-icons.svg";
 import ImgLazyLoad from "../img-lazy-load/img-lazy-load";
+// import ImgLazyLoad from "../img-lazy-load/img-lazy-load";
 
 function Hero() {
   return (
@@ -15,8 +16,8 @@ function Hero() {
       >
         <div className={`${styles.bg_img_div} absolute w-[100%] top-[-30px] bottom-0`}>
           <span className="image_container">
-            {/* <Image src={heroImage} alt="Hero image" /> */}
-            <ImgLazyLoad src={heroImage} alt={"Hero image"} classes={""} />
+            {/* <ImgLazyLoad src={heroImage} alt={"Hero image"} classes={""} /> */}
+            <ImgLazyLoad/>
           </span>
         </div>
         <div className="text-center pb-[60px] z-[0]">
