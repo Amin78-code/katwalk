@@ -120,9 +120,6 @@
 .heart:hover {
   background-position: -58px -150px;
 }
-.heart-for-product-detail:hover {
-  background-position: -3px -93px;
-}
 .user:hover {
   background-position: -24px -121px;
 }
@@ -266,6 +263,10 @@
 .taPoint3 {
   transition: all 0.3s ease;
 }
+
+.taPoint6 {
+  transition: all 0.6s ease;
+}
 .rotate45 {
   transform: rotate(45deg);
 }
@@ -278,8 +279,11 @@
 .dblock {
   display: block !important;
 }
+.dflex {
+  display: flex !important;
+}
 .slide-tab {
-  height: auto !important;
+  max-height: 700px !important;
   border-bottom: 1px solid #c53a19;
 }
 .show-colors {
@@ -404,6 +408,13 @@
 }
 /* header end */
 /* shop css start */
+.toggle-all-filters-main-div {
+  display: flex !important;
+  animation: showSlow 0.3s forwards;
+}
+.minus-icon:before {
+  content: '-' !important;
+}
 .size-box:hover {
   background-color: #fbf1e8;
 }
@@ -422,6 +433,7 @@
 
 .show-alteration-div {
   height: 192px !important;
+  overflow: visible !important;
 }
 
 .tr-hover-pink:hover td {
@@ -445,13 +457,6 @@
 }
 .share-icon-div {
   transition: all 0.3s ease;
-}
-.share-icon-div:hover {
-  border-color: #000;
-}
-.card:hover .title {
-  color: #fff;
-  background-color: #c93e27;
 }
 .card img {
   transition: all 0.3s ease;
@@ -594,6 +599,17 @@
   .product-slider-div .slick-next:before {
     font-size: 30px !important;
   }
+  
+@keyframes showSlow {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 700px;
+  }
+}
 }
 li.relative:hover .contact-box {
   display: block !important;
@@ -685,6 +701,10 @@ li.relative:hover .contact-box {
   .category-card {
     padding: 0 8px 0 0;
   }
+  .category-card .img-div {
+    max-height: 213px;
+    overflow: hidden;
+  }
   .feature-slider-mob .slick-dots {
     bottom: -50px;
   }
@@ -717,6 +737,16 @@ li.relative:hover .contact-box {
   .container-for-content-pages {
     width: 100%;
     max-width: 728px;
+  }
+  .heart-for-product-detail:hover {
+    background-position: -3px -93px;
+  }
+  .share-icon-div:hover {
+    border-color: #000;
+  }
+  .card:hover .title {
+    color: #fff;
+    background-color: #c93e27;
   }
 }
 @media (min-width: 1025px) {

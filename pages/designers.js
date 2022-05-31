@@ -41,70 +41,69 @@ import ProductCard from "../components/product-card/productCard";
 import Link from "next/link";
 import ImgLazyLoad from "../components/img-lazy-load/img-lazy-load";
 
+const designers = [
+  {
+    name: "Eight",
+    image: Eight,
+  },
+  {
+    name: "Fourteen Ten",
+    image: FourteenTen,
+  },
+  {
+    name: "Nada Line",
+    image: NadaLine,
+  },
+  {
+    name: "Zahra Line",
+    image: ZahraLine,
+  },
+  {
+    name: "Walaa Kazem",
+    image: WalaaKazem,
+  },
+  {
+    name: "Kaf By Kaf",
+    image: KafByKaf,
+  },
+  {
+    name: "Fouz Couture",
+    image: FouzCouture,
+  },
+  {
+    name: "Gmash",
+    image: Gmash,
+  },
+  {
+    name: "Nakhlah",
+    image: Nakhlah,
+  },
+  {
+    name: "Clue",
+    image: Clue,
+  },
+  {
+    name: "Maliha",
+    image: Maliha,
+  },
+  {
+    name: "Raw Mestika",
+    image: RawMestika,
+  },
+  {
+    name: "Estilo Designs",
+    image: EstiloDesigns,
+  },
+  {
+    name: "Muna Mattar",
+    image: MunaMattar,
+  },
+];
 function Designers() {
-  const designers = [
-    {
-      name: "Eight",
-      image: Eight,
-    },
-    {
-      name: "Fourteen Ten",
-      image: FourteenTen,
-    },
-    {
-      name: "Nada Line",
-      image: NadaLine,
-    },
-    {
-      name: "Zahra Line",
-      image: ZahraLine,
-    },
-    {
-      name: "Walaa Kazem",
-      image: WalaaKazem,
-    },
-    {
-      name: "Kaf By Kaf",
-      image: KafByKaf,
-    },
-    {
-      name: "Fouz Couture",
-      image: FouzCouture,
-    },
-    {
-      name: "Gmash",
-      image: Gmash,
-    },
-    {
-      name: "Nakhlah",
-      image: Nakhlah,
-    },
-    {
-      name: "Clue",
-      image: Clue,
-    },
-    {
-      name: "Maliha",
-      image: Maliha,
-    },
-    {
-      name: "Raw Mestika",
-      image: RawMestika,
-    },
-    {
-      name: "Estilo Designs",
-      image: EstiloDesigns,
-    },
-    {
-      name: "Muna Mattar",
-      image: MunaMattar,
-    },
-  ];
-
   return (
     <>
       <Layout>
-        <div className="w-[100%] max-w-[1600px] mx-auto mt-[80px] px-[3%]     sm:mt-[10px]">
+        <div className="w-[100%] max-w-[1600px] mx-auto mt-[85px] px-[3%]     sm:mt-[10px]">
           <div className="flex flex-wrap justify-center gap-x-[20px] flex-col pb-[0px]      sm:flex-row sm:pb-[50px]">
             {designers.map((value, index) => {
               return (
@@ -115,11 +114,14 @@ function Designers() {
                   >
                     <Link href="/shop/designer">
                       <a>
-                        <div className="w-[100%] h-[100%] mb-[20px]">
-                          {/* <Image src={value.image} alt="image" /> */}
-                          <ImgLazyLoad src={value.image} alt={"image"} classes={""} />
+                        <div className="w-[100%] h-[100%] mb-[28px]">
+                          <ImgLazyLoad
+                            src={value.image}
+                            alt={"image"}
+                            classes={""}
+                          />
                         </div>
-                        <p className="fwr text-[#000] text-[18px] mb-[10px]">
+                        <p className="fwr text-[#000] text-[18px] tracking-[0.5px] mb-[5px]">
                           {value.name}
                         </p>
                       </a>

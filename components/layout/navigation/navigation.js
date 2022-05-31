@@ -362,7 +362,8 @@ function Navigation() {
               onClick={() => cartToggler()}
               className="text-[20px] cursor-pointer block     lg:hidden"
             /> */}
-            <div className="my-icon bag w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-10px_top_-151px] block     lg:hidden"></div>
+            <div className="my-icon bag w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-10px_top_-151px] block     lg:hidden"
+            onClick={() => cartToggler()}></div>
             <span className="work-regular text-[12px] ml-[7px] pt-[3px]">
               1
             </span>
@@ -434,7 +435,7 @@ function Navigation() {
                 onClick={() => cartToggler()}
               ></div>
             </div>
-            <div className="flex flex-col justify-between h-[85vh]">
+            <div className="flex flex-col h-[85vh]">
               <ul>
                 {/* <li>
                   <a
@@ -545,11 +546,12 @@ function Navigation() {
                 </li>
                 <li>
                   <a
-                    onClick={() => shopallDropdown()}
+                   onClick={() => shopallDropdown()}
                     className="work-regular flex justify-between text-[#ffffff80] text-[13px] py-[13px] block border-b-[1px] border-[#505050] uppercase"
                   >
-                    SHOP ALL
-                    <IoChevronDown className="text-[#ffffff80] mr-[10px]  " />
+                   <Link href="/shop">
+                   SHOP ALL</Link>
+                    <IoChevronDown className="text-[#ffffff80] mr-[10px]" />
                   </a>
                   <ul
                     className={`${shopAllClasses.join(
@@ -602,7 +604,7 @@ function Navigation() {
                   </a>
                 </li>
               </ul>
-              <ul>
+              <ul className="mt-[5em] pr-[15%] mb-[35px]">
                 <li>
                   <Link href="/about-us">
                     <a className="work-regular text-[#ffffff80] text-[13px] py-[8px] block uppercase">
@@ -650,7 +652,7 @@ function Navigation() {
           ></div>
           <AiOutlineClose className="text-[26px] text-[#fff] absolute top-[15px] right-[20px]" />
           <div
-            className={`mob-menu-white-div h-[100vh] bg-[#fff] px-[20px] pt-[15px] pb-[20px] absolute translate-x-[140%] border-l-[1px] border-[#fbf1e8]`}
+            className={`mob-menu-white-div h-[100vh] bg-[#fff] px-[20px] pt-[15px] pb-[20px] absolute translate-x-[140%] border-l-[1px] border-[#fbf1e8] taPoint3`}
           >
             <div className="flex justify-between border-b-[2px] border-[#ededed]">
               <h6 className="fwl text-[13px] text-[#1b1b28] capitalize pb-[13px]">

@@ -8,7 +8,7 @@ import Link from "next/link";
 function Footer() {
   return (
     <>
-      <footer className="w-[100%] h-[94px] bg-[#c53a19] py-[15px] flex justify-between px-[3%]">
+      <footer className="w-[100%] h-[87.5px] bg-[#c53a19] py-[15px] flex justify-between pl-[3%] pr-[24px]       sm:px-[3%] sm:h-[94px]">
         <div className="flex  items-center">
           <div className={`${styles.image_div} max-w-[80px] mr-[0px]       sm:max-w-[65px] sm:mr-[10px] md:mr-[50px]`}>
             <span className="image_container">
@@ -102,7 +102,7 @@ function Footer() {
           <p className={`${styles.footer_right_div} work-regular text-[#fff] text-[10px] tracking-[0.05em] uppercase cursor-pointer pr-[20px] pb-[4px] text-right     sm:text-left sm:text-[12px] sm:pb-[0]`}>
             © KATWALK 2021 CR No. 2062617591 VAT No. 310401691200003
           </p>
-          <div className={`${styles.right_img_div} max-w-[40px] mt-[5px] mr-[10px]     sm:mr-[25px] sm:max-w-[45px]`}>
+          <div className={`${styles.right_img_div} max-w-[41px] mt-[5px] mr-[10px]     sm:mr-[25px] sm:max-w-[45px]`}>
             <span className="image_container">
               <Image src={vat} className="cursor-pointer" alt="image" />
             </span>

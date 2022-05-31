@@ -14,7 +14,7 @@ function FeaturesCard({ data }) {
             <ImgLazyLoad src={data.img} alt={"image"} classes={""} />
           </span>
         </div>
-        <h6 className="work-regular text-[#111111] text-[15px] leading-[1.5] tracking-[0.5px] font-[600] mt-[10px]">
+        <h6 className="work-regular text-[#111111] text-[15px] leading-[1.5] tracking-[0.5px] font-[600] mt-[6px]">
           {data.title}
         </h6>
         <p className="work-regular text-[#656565] mx-auto text-[12px] leading-[1.333] tracking-[0.5px] max-w-[300px] mt-[8px]">

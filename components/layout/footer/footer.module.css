@@ -27,7 +27,7 @@
 
 @media (max-width: 1260px) {
   .footer_right_div {
-    padding-right: 10px !important;
+    padding-right: 18px !important;
     text-align: right;
   }  
   .image_div {
@@ -38,3 +38,10 @@
   }
 }
 
+
+@media (max-width: 640px) {
+  .image_div {
+    margin-top: 5px;
+    margin-right: 10px;
+  }
+}

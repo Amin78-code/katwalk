@@ -14,7 +14,7 @@ function SizeGuideModal({toggleSizeGuideModal}) {
   return (
     <>
       <div className="fixed top-0 left-0 bottom-0 right-0 bg-[#00000087] w-[100%] h-[100%] z-[30] flex justify-center items-center">
-        <div className="max-w-[810px] overflow-hidden px-[20px] pb-[20px] pt-[50px] bg-[#fff] relative z-[60]">
+        <div className="max-w-[100%] h-[100%] overflow-hidden px-[20px] pb-[20px] pt-[50px] bg-[#fff] relative z-[60]     sm:h-[auto] sm:max-w-[810px]">
           <IoCloseOutline className="absolute text-[25px] right-[17px] top-[20px] z-[25]" onClick={toggleSizeGuideModal} />
           <div className="overflow-auto max-h-[82vh] pb-[20px]">
             <span className="image_container">

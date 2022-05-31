@@ -40,6 +40,9 @@ const sheilaColor = [
 ];
 
 const selectSize = ["50", "52", "54"];
+const length = ["Select Length", "50", "52", "54", "56", "58"];
+const bust = ["Select Bust", "20", "22", "23", "25", "26", "28"];
+const sleeve = ["Select Sleeve", "25", "26", "27", "28", "29"];
 
 const selectSheilaLength = ["200cm", "170cm", "150cm"];
 
@@ -75,6 +78,10 @@ function ProductDetail() {
   const [basicColor, setBasicColor] = useState({});
   const [selectedBasicSize, setSelectedBasicSize] = useState("");
   const [selectedSheilaSize, setSelectedSheilaSize] = useState("");
+
+  const [selectedLength, setSelectedLength] = useState("");
+  const [selectedBust, setSelectedBust] = useState("");
+  const [selectedSleeve, setSelectedSleeve] = useState("");
 
   const productImages = [
     { image: img1 },
@@ -169,6 +176,13 @@ function ProductDetail() {
 
   const tab1Toggler = () => {
     if (!togglerTab1.includes("slide-tab")) {
+      settogglerTab2([]);
+      settogglerTab2PlusIcon([]);
+      settogglerTab3([]);
+      settogglerTab3PlusIcon([]);
+      settogglerTab4([]);
+      settogglerTab4PlusIcon([]);
+
       settogglerTab1(["slide-tab"]);
     } else {
       settogglerTab1([]);
@@ -182,6 +196,13 @@ function ProductDetail() {
 
   const tab2Toggler = () => {
     if (!togglerTab2.includes("slide-tab")) {
+      settogglerTab1([]);
+      settogglerTab1PlusIcon([]);
+      settogglerTab3([]);
+      settogglerTab3PlusIcon([]);
+      settogglerTab4([]);
+      settogglerTab4PlusIcon([]);
+
       settogglerTab2(["slide-tab"]);
     } else {
       settogglerTab2([]);
@@ -195,6 +216,13 @@ function ProductDetail() {
 
   const tab3Toggler = () => {
     if (!togglerTab3.includes("slide-tab")) {
+      settogglerTab1([]);
+      settogglerTab1PlusIcon([]);
+      settogglerTab2([]);
+      settogglerTab2PlusIcon([]);
+      settogglerTab4([]);
+      settogglerTab4PlusIcon([]);
+
       settogglerTab3(["slide-tab"]);
     } else {
       settogglerTab3([]);
@@ -208,6 +236,13 @@ function ProductDetail() {
 
   const tab4Toggler = () => {
     if (!togglerTab4.includes("slide-tab")) {
+      settogglerTab1([]);
+      settogglerTab1PlusIcon([]);
+      settogglerTab2([]);
+      settogglerTab2PlusIcon([]);
+      settogglerTab3([]);
+      settogglerTab3PlusIcon([]);
+
       settogglerTab4(["slide-tab"]);
     } else {
       settogglerTab4([]);
@@ -473,7 +508,7 @@ function ProductDetail() {
       selectedSheilaSize == ""
     ) {
       setIsVartiationsSelected(true);
-      setTimeout(()=> setIsVartiationsSelected(false), 3000);
+      setTimeout(() => setIsVartiationsSelected(false), 3000);
     } else {
       setIsSecureCheckout(true);
     }
@@ -490,6 +525,19 @@ function ProductDetail() {
 
   const closeProceedToCheckout = () => {
     setIsSecureCheckout(false);
+  };
+
+  const selectedOption = (data, name) => {
+    if (name == "length") {
+      setSelectedLength(data);
+      lengthToggler()
+    } else if (name == "bust") {
+      setSelectedBust(data);
+      bustToggler()
+    } else if (name == "sleeve") {
+      setSelectedSleeve(data);
+      sleeveToggler()
+    }
   };
 
   return (
@@ -517,7 +565,7 @@ function ProductDetail() {
               {/* color */}
               <div className="w-[100%] mb-[20px]">
                 <div
-                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed]"
+                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed] cursor-pointer"
                   onClick={() => colorsDivToggler()}
                 >
                   <div>
@@ -544,7 +592,7 @@ function ProductDetail() {
                 <div
                   className={`${togglerColorsDiv.join(
                     " "
-                  )} taPoint3 h-[0] overflow-hidden`}
+                  )} taPoint6 max-h-[0] overflow-hidden`}
                 >
                   <h6 className="fwb text-[#1b1b28] text-[13px] pt-[10px] pb-[10px]">
                     Color:
@@ -568,7 +616,7 @@ function ProductDetail() {
               {/* sheila color */}
               <div className="w-[100%]">
                 <div
-                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed] mb-[20px]"
+                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed] cursor-pointer mb-[20px]"
                   onClick={() => sheilaColorsDivToggler()}
                 >
                   <div>
@@ -595,7 +643,7 @@ function ProductDetail() {
                 <div
                   className={`${togglerSheilaColorsDiv.join(
                     " "
-                  )} taPoint3 h-[0] overflow-hidden`}
+                  )} taPoint6 max-h-[0] overflow-hidden`}
                 >
                   <h6 className="fwb text-[#1b1b28] text-[13px] pt-[10px] pb-[10px]">
                     Sheila Color:
@@ -743,13 +791,13 @@ function ProductDetail() {
                   </div>
                 </div>
 
-                <div  className={`${togglerAlterationDiv.join(
-                      " "
-                    )} w-[100%] h-[0] overflow-hidden mt-[15px] taPoint3`}>
+                <div
+                  className={`${togglerAlterationDiv.join(
+                    " "
+                  )} w-[100%] h-[0] overflow-hidden mt-[15px] taPoint3`}
+                >
                   {/* length */}
-                  <div
-                    className={`  taPoint3  overflow-hidden`}
-                  >
+                  <div className={`  taPoint3`}>
                     <div className="w-[100%} flex items-center mb-[20px]">
                       <div className="min-w-[60px] max-w-[60px]">
                         <h6 className="fwl text-[12px] mb-[2px] uppercase">
@@ -763,7 +811,11 @@ function ProductDetail() {
                           onClick={() => lengthToggler()}
                         >
                           <p className="fwr h-[40px] leading-[40px] text-[11px] text-[#7e7e7e] capitalize">
-                            select length
+                            {selectedLength !== "" ? (
+                              <>{selectedLength}</>
+                            ) : (
+                              "select length"
+                            )}
                           </p>
 
                           <BsChevronDown
@@ -777,32 +829,23 @@ function ProductDetail() {
                             styles.variation_dropdowns
                           } w-[100%] border-[#fbf1e8] border-[1px] border-b-[0] absolute bg-[#fff] z-[10] hidden`}
                         >
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            Select Length
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            50
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            52
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            54
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            56
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            58
-                          </div>
+                          {length.map((value) => {
+                            return (
+                              <div
+                                onClick={() => selectedOption(value, "length")}
+                                key={value + 1}
+                                className={`${value == selectedLength ? styles.active : ""} fwl text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]`}
+                              >
+                                {value}
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
                   </div>
                   {/* bust */}
-                  <div
-                    className={` taPoint3  overflow-hidden`}
-                  >
+                  <div className={` taPoint3`}>
                     <div className="w-[100%} flex items-center mb-[20px]">
                       <div className="min-w-[60px] max-w-[60px]">
                         <h6 className="fwl text-[12px] mb-[2px] uppercase">
@@ -816,7 +859,11 @@ function ProductDetail() {
                           onClick={() => bustToggler()}
                         >
                           <p className="fwr h-[40px] leading-[40px] text-[11px] text-[#7e7e7e] capitalize">
-                            select bust
+                          {selectedBust !== "" ? (
+                              <>{selectedBust}</>
+                            ) : (
+                              "select bust"
+                            )}
                           </p>
 
                           <BsChevronDown
@@ -830,36 +877,24 @@ function ProductDetail() {
                             styles.variation_dropdowns
                           } w-[100%] border-[#fbf1e8] border-[1px] border-b-[0] absolute bg-[#fff] z-[10] hidden`}
                         >
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            Select Bust
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            20
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            22
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            23
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            25
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            26
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            28
-                          </div>
+                          {bust.map((value) => {
+                            return (
+                              <div
+                                onClick={() => selectedOption(value, "bust")}
+                                key={value + 1}
+                                className={`${value == selectedBust ? styles.active : ""} fwl text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]`}
+                              >
+                                {value}
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* sleeve */}
-                  <div
-                    className={`  taPoint3  overflow-hidden`}
-                  >
+                  <div className={`  taPoint3`}>
                     <div className="w-[100%} flex items-center mb-[20px]">
                       <div className="min-w-[60px] max-w-[60px]">
                         <h6 className="fwl text-[12px] mb-[2px] uppercase">
@@ -873,7 +908,11 @@ function ProductDetail() {
                           onClick={() => sleeveToggler()}
                         >
                           <p className="fwr h-[40px] leading-[40px] text-[11px] text-[#7e7e7e] capitalize">
-                            select sleeve
+                          {selectedSleeve !== "" ? (
+                              <>{selectedSleeve}</>
+                            ) : (
+                              "select sleeve"
+                            )}
                           </p>
 
                           <BsChevronDown
@@ -887,24 +926,17 @@ function ProductDetail() {
                             styles.variation_dropdowns
                           } w-[100%] border-[#fbf1e8] border-[1px] border-b-[0] absolute bg-[#fff] z-[10] hidden`}
                         >
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            Select Sleeve
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            25
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            26
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            27
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            28
-                          </div>
-                          <div className="fwr text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]">
-                            29
-                          </div>
+                          {sleeve.map((value) => {
+                            return (
+                              <div
+                                onClick={() => selectedOption(value, "sleeve")}
+                                key={value + 1}
+                                className={`${value == selectedSleeve ? styles.active : ""} fwl text-[13px] text-[#1b1b28] border-b-[1px] border-b-[#fbf1e8] h-[48px] leading-[48px] pl-[7px]`}
+                              >
+                                {value}
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -973,7 +1005,7 @@ function ProductDetail() {
               {/* tab1 */}
               <div className="w-[100%] mt-[5px] mb-[8px] max-w-[100%]      lg:max-w-[400px]">
                 <div
-                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed]"
+                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed] cursor-pointer"
                   onClick={() => tab1Toggler()}
                 >
                   <div>
@@ -990,7 +1022,7 @@ function ProductDetail() {
                 <div
                   className={`${togglerTab1.join(
                     " "
-                  )} taPoint3 h-[0] overflow-hidden`}
+                  )} taPoint6 max-h-[0] overflow-hidden`}
                 >
                   <table className="w-[100%]">
                     <tbody>
@@ -1036,7 +1068,7 @@ function ProductDetail() {
               {/* tab2 */}
               <div className="w-[100%] mt-[5px] mb-[8px] max-w-[100%]      lg:max-w-[400px]">
                 <div
-                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed]"
+                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed] cursor-pointer"
                   onClick={() => tab2Toggler()}
                 >
                   <div>
@@ -1053,7 +1085,7 @@ function ProductDetail() {
                 <div
                   className={`${togglerTab2.join(
                     " "
-                  )} taPoint3 h-[0] overflow-hidden`}
+                  )} taPoint6 max-h-[0] overflow-hidden`}
                 >
                   <table className="w-[100%]">
                     <tbody>
@@ -1073,7 +1105,7 @@ function ProductDetail() {
               {/* tab3 */}
               <div className="w-[100%] mt-[5px] mb-[8px] max-w-[100%]      lg:max-w-[400px]">
                 <div
-                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed]"
+                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed] cursor-pointer"
                   onClick={() => tab3Toggler()}
                 >
                   <div>
@@ -1090,7 +1122,7 @@ function ProductDetail() {
                 <div
                   className={`${togglerTab3.join(
                     " "
-                  )} taPoint3 h-[0] overflow-hidden`}
+                  )} taPoint6 max-h-[0] overflow-hidden`}
                 >
                   <table className="w-[100%]">
                     <tbody>
@@ -1110,7 +1142,7 @@ function ProductDetail() {
               {/* tab4 */}
               <div className="w-[100%] mt-[5px] mb-[8px] max-w-[100%]      lg:max-w-[400px]">
                 <div
-                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed]"
+                  className="w-[100%} flex justify-between items-center border-b-[1px] border-[#ededed] cursor-pointer"
                   onClick={() => tab4Toggler()}
                 >
                   <div>
@@ -1127,7 +1159,7 @@ function ProductDetail() {
                 <div
                   className={`${togglerTab4.join(
                     " "
-                  )} taPoint3 h-[0] overflow-hidden`}
+                  )} taPoint6 max-h-[0] overflow-hidden`}
                 >
                   <table className="w-[100%]">
                     <tbody>
@@ -1211,7 +1243,11 @@ function ProductDetail() {
 
         {/* <MessageBox /> */}
       </Layout>
-      {isVartiationsSelected == true ? <MessageBox message={"Please choose all the options"} /> : ""}
+      {isVartiationsSelected == true ? (
+        <MessageBox message={"Please choose all the options"} />
+      ) : (
+        ""
+      )}
     </>
   );
 }

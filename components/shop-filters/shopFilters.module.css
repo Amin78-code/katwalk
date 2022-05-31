@@ -5,25 +5,41 @@
 .filter_main_div:hover .form-check-input {
   border-color: #c53a19 !important;
 }
-.filters_heading {
-  display: none;
-}
+/* .filters_heading {
+  display: flex;
+  flex-direction: column;
+} */
 .center_heading_div {
   display: none;
 }
 @media (max-width: 1200px) {
-  .filters_heading {
-    display: block;
-  }
+  /* .filters_heading {
+    display: flex;
+  } */
 }
 @media (max-width: 1024px) {
   .all_filters_div {
-    display: none;
+    
+    /* display: flex; */
+    flex-direction: column;
   }
   .right_heading_div {
     display: none;
   }
+  
+}
+.center_heading_div {
+  display: block;
+}
+@media (min-width: 1024px) {
   .center_heading_div {
-    display: block;
+    display: none;
   }
+}
+.plus_icon:before {
+  position: absolute;
+  width: 17.4px;
+  height: 17.4px;
+  content: '+';
+  font-size: 28px;
 }

@@ -3,6 +3,10 @@
   /* background-color: #c53a24; */
   background-color: #fbf1e8;
 }
+.variation_dropdowns div.active {
+  color: #fff;
+  background-color: #c53a24;
+}
 .need_help_div:hover .dropdown_menu_div {
   display: block;
 }

@@ -134,6 +134,17 @@ function ShopFilters({ forDesigner }) {
   const sortByChevron = useRef(null);
   const categoryChevron = useRef(null);
 
+  const designerPlus = useRef(null);
+  const sizePlus = useRef(null);
+  const colorPlus = useRef(null);
+  const pricePlus = useRef(null);
+  const sortByPlus = useRef(null);
+  const categoryPlus = useRef(null);
+
+  const allFiltersMainDiv = useRef(null);
+  const resetAllFilterAndCrossDiv = useRef(null);
+  
+
   const [currectSelectedSize, setCurrectSelectedSize] = useState("");
   const [currectSelectedColor, setCurrectSelectedColor] = useState("");
   const [currectSelectedPrice, setCurrectSelectedPrice] = useState("");
@@ -149,6 +160,16 @@ function ShopFilters({ forDesigner }) {
     } else if (filterName == "sortByFilter") {
       setCurrectSelectedSortBy(selectedOption);
     }
+  };
+
+  const openAllFiltersMainDiv = () => {
+    allFiltersMainDiv.current.classList.add("toggle-all-filters-main-div");
+    resetAllFilterAndCrossDiv.current.classList.add("dflex");
+  };
+
+  const closeAllFiltersMainDiv = () => {
+    allFiltersMainDiv.current.classList.remove("toggle-all-filters-main-div");
+    resetAllFilterAndCrossDiv.current.classList.remove("dflex");
   };
 
   useEffect(() => {
@@ -222,23 +243,35 @@ function ShopFilters({ forDesigner }) {
 
     if (category_dropdown == dropdownName) {
       categoryChevron.current.classList.toggle("rotate180b");
+      categoryPlus.current.classList.toggle("minus-icon");
     }
     if (size_dropdown == dropdownName) {
       sizeChevron.current.classList.toggle("rotate180b");
+      sizePlus.current.classList.toggle("minus-icon");
     }
     if (designer_dropdown == dropdownName) {
       designerChevron.current.classList.toggle("rotate180b");
+      designerPlus.current.classList.toggle("minus-icon");
     }
     if (color_dropdown == dropdownName) {
       colorChevron.current.classList.toggle("rotate180b");
+      colorPlus.current.classList.toggle("minus-icon");
     }
     if (price_dropdown == dropdownName) {
       priceChevron.current.classList.toggle("rotate180b");
+      pricePlus.current.classList.toggle("minus-icon");
     }
     if (sort_by_dropdown == dropdownName) {
       sortByChevron.current.classList.toggle("rotate180b");
+      sortByPlus.current.classList.toggle("minus-icon");
     }
   }
+
+  const resetAllFilters = () => {
+    setCurrectSelectedSize("");
+    setCurrectSelectedPrice("");
+    setCurrectSelectedSortBy("");
+  };
 
   return (
     <>
@@ -258,7 +291,7 @@ function ShopFilters({ forDesigner }) {
             <div
               className={`${styles.center_heading_div} flex text-center main-title`}
             >
-              <p className="fwl text-[20px] tracking-[0.5px] uppercase mt-[-10px] pb-[10px]">
+              <p className="fwl text-[20px] tracking-[0.5px] uppercase mt-[-2px] pb-[22px]">
                 all products
               </p>
             </div>
@@ -266,38 +299,73 @@ function ShopFilters({ forDesigner }) {
         )}
 
         <div className={`${styles.right_heading_div} flex justify-end`}>
-          <p className="fwr self-end text-[13px] text-[#c53a19] tracking-[0.5px] pr-[20px] cursor-pointer">
+          <p
+            className="fwr self-end text-[13px] text-[#c53a19] tracking-[0.5px] pr-[20px] cursor-pointer"
+            onClick={() => resetAllFilters()}
+          >
             {forDesigner == true ? "Reset filters" : "Reset All filters"}
           </p>
         </div>
         <div
           className={`filter-main-div border-[#b1b1b1] border-t-[0px] border-b-[0px]      md:border-t-[1px] md:border-b-[1px]`}
         >
-          <div
-            className={`${styles.filters_heading} w-[100%] flex flex-start px-[10px]`}
-          >
-            <h3 className="fwl text-[#000] text-[13px] uppercase h-[40px] leading-[40px]">
+          <div className={` w-[100%] hidden flex-start px-[10px]`}>
+            <h3 className="fwl text-[#000] text-[13px] uppercase h-[34px] leading-[40px]">
               filters
             </h3>
           </div>
 
-          <div className={`${styles.all_filters_div} flex`}>
+          <div
+            className={`${styles.filters_heading} w-[100%] flex justify-between flex-start px-[10px]    lg:hidden`}
+          >
+            <h3
+              className="fwl text-[#000] text-[13px] uppercase h-[34px] leading-[40px]"
+              onClick={() => openAllFiltersMainDiv()}
+            >
+              filters
+            </h3>
+            <div className="flex  items-center hidden mb-[20px]" ref={resetAllFilterAndCrossDiv}>
+              <h3
+                className="fwl text-[#000] text-[13px] uppercase h-[34px] leading-[40px] cursor-pointer"
+                onClick={() => resetAllFilters()}
+              >
+                reset all filters
+              </h3>
+              <IoCloseOutline
+                className="ml-[10px] text-[25px]"
+                onClick={() => closeAllFiltersMainDiv()}
+              />
+            </div>
+          </div>
+
+          <div
+            ref={allFiltersMainDiv}
+            className={`${styles.all_filters_div} hidden border-[#C53A19] border-t-[1px] lg:border-[0] lg:flex`}
+          >
             <div
               className={`${styles.active} single-filter flex-1 relative cursor-pointer`}
             >
               <div
-                className={`flex justify-between items-center`}
+                className={`flex justify-between items-center border-[#b1b1b1] border-b-[1px] lg:border-[0]`}
                 onClick={() => openDropdown(category_dropdown)}
               >
-                <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
+                <p className="fwl uppercase lg:capitalize text-[#1b1b28] text-[12px] lg:text-[11px] my-[8px] lg:my-[13px] px-[16px] h-[22px] leading-[22px] flex">
+                  <div
+                    ref={categoryPlus}
+                    className={`taPoint3 hidde n      lg:bloc k ${styles.plus_icon} block lg:hidden w-[20px] mr-[15px]`}
+                  ></div>
                   category
                 </p>
-                <div ref={categoryChevron} className="taPoint3">
+                <div
+                  ref={categoryChevron}
+                  className="taPoint3 hidden     lg:block"
+                >
                   <IoChevronDown className="mr-[10px]" />
                 </div>
               </div>
               <div
-                className={`  w-[300px] border-[#fbf1e8] border-[1px] absolute z-[2] bg-[#fff] f-out`}
+                className={`w-[100%] lg:w-[300px] border-[#fbf1e8] border-[1px] relative lg:absolute 
+ pt-[20px] lg:pt-0 z-[2] bg-[#fff] f-out`}
                 ref={category_dropdown}
               >
                 <div className="flex px-[15px] w-[100%] max-h-[350px] overflow-auto">
@@ -463,13 +531,20 @@ function ShopFilters({ forDesigner }) {
             </div>
             <div className="flex-1 single-filter relative cursor-pointer">
               <div
-                className={`flex justify-between items-center`}
+                className={`flex justify-between items-center border-[#b1b1b1] border-b-[1px] lg:border-[0]`}
                 onClick={() => openDropdown(designer_dropdown)}
               >
-                <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
+                <p className="fwl uppercase lg:capitalize text-[#1b1b28] text-[12px] lg:text-[11px] my-[8px] lg:my-[13px] px-[16px] h-[22px] leading-[22px] flex">
+                  <div
+                    ref={designerPlus}
+                    className={`taPoint3 hidde n      lg:bloc k ${styles.plus_icon} block lg:hidden w-[20px] mr-[15px]`}
+                  ></div>
                   designers
                 </p>
-                <div ref={designerChevron} className="taPoint3">
+                <div
+                  ref={designerChevron}
+                  className="taPoint3 hidden     lg:block"
+                >
                   <IoChevronDown className="mr-[10px]" />
                 </div>
               </div>
@@ -482,11 +557,17 @@ function ShopFilters({ forDesigner }) {
               className="flex-1 single-filter relative cursor-pointer"
               onClick={() => openDropdown(size_dropdown)}
             >
-              <div className={`flex justify-between items-center`}>
-                <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
+              <div
+                className={`flex justify-between items-center  border-[#b1b1b1] border-b-[1px] lg:border-[0]`}
+              >
+                <p className="fwl uppercase lg:capitalize text-[#1b1b28] text-[12px] lg:text-[11px] my-[8px] lg:my-[13px] px-[16px] h-[22px] leading-[22px] flex">
+                  <div
+                    ref={sizePlus}
+                    className={`taPoint3 hidde n      lg:bloc k ${styles.plus_icon} block lg:hidden w-[20px] mr-[15px]`}
+                  ></div>
                   size
                 </p>
-                <div ref={sizeChevron} className="taPoint3">
+                <div ref={sizeChevron} className="taPoint3 hidden     lg:block">
                   <IoChevronDown className="mr-[10px]" />
                 </div>
               </div>
@@ -502,11 +583,20 @@ function ShopFilters({ forDesigner }) {
               className="flex-1 single-filter relative cursor-pointer"
               onClick={() => openDropdown(color_dropdown)}
             >
-              <div className={`flex justify-between items-center`}>
-                <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
+              <div
+                className={`flex justify-between items-center  border-[#b1b1b1] border-b-[1px] lg:border-[0]`}
+              >
+                <p className="fwl uppercase lg:capitalize text-[#1b1b28] text-[12px] lg:text-[11px] my-[8px] lg:my-[13px] px-[16px] h-[22px] leading-[22px] flex">
+                  <div
+                    ref={colorPlus}
+                    className={`taPoint3 hidde n      lg:bloc k ${styles.plus_icon} block lg:hidden w-[20px] mr-[15px]`}
+                  ></div>
                   color
                 </p>
-                <div ref={colorChevron} className="taPoint3">
+                <div
+                  ref={colorChevron}
+                  className="taPoint3 hidden      lg:block"
+                >
                   <IoChevronDown className="mr-[10px]" />
                 </div>
               </div>
@@ -522,11 +612,20 @@ function ShopFilters({ forDesigner }) {
               className="flex-1 single-filter relative cursor-pointer"
               onClick={() => openDropdown(price_dropdown)}
             >
-              <div className={`flex justify-between items-center`}>
-                <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
+              <div
+                className={`flex justify-between items-center  border-[#b1b1b1] border-b-[1px] lg:border-[0]`}
+              >
+                <p className="fwl uppercase lg:capitalize text-[#1b1b28] text-[12px] lg:text-[11px] my-[8px] lg:my-[13px] px-[16px] h-[22px] leading-[22px] flex">
+                  <div
+                    ref={pricePlus}
+                    className={`taPoint3 hidde n      lg:bloc k ${styles.plus_icon} block lg:hidden w-[20px] mr-[15px]`}
+                  ></div>
                   price
                 </p>
-                <div ref={priceChevron} className="taPoint3">
+                <div
+                  ref={priceChevron}
+                  className="taPoint3 hidden      lg:block"
+                >
                   <IoChevronDown className="mr-[10px]" />
                 </div>
               </div>
@@ -542,11 +641,20 @@ function ShopFilters({ forDesigner }) {
               className="flex-1 single-filter relative cursor-pointer"
               onClick={() => openDropdown(sort_by_dropdown)}
             >
-              <div className={`flex justify-between items-center`}>
-                <p className="fwr capitalize text-[#1b1b28] text-[11px] my-[13px] px-[16px] h-[22px] leading-[22px]">
+              <div
+                className={`flex justify-between items-center  border-[#b1b1b1] border-b-[1px] lg:border-[0]`}
+              >
+                <p className="fwl uppercase lg:capitalize text-[#1b1b28] text-[12px] lg:text-[11px] my-[8px] lg:my-[13px] px-[16px] h-[22px] leading-[22px] flex">
+                  <div
+                    ref={sortByPlus}
+                    className={`taPoint3 hidde n      lg:bloc k ${styles.plus_icon} block lg:hidden w-[20px] mr-[15px]`}
+                  ></div>
                   sorty by
                 </p>
-                <div ref={sortByChevron} className="taPoint3">
+                <div
+                  ref={sortByChevron}
+                  className="taPoint3 hidden     lg:block"
+                >
                   <IoChevronDown className={`mr-[10px]`} />
                 </div>
               </div>

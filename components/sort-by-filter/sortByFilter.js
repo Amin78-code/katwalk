@@ -11,7 +11,8 @@ function SortByFilter({
   return (
     <>
       <div
-        className={`w-[320px] max-w-[100%] border-[#fbf1e8] border-[1px] absolute z-[2] bg-[#fff] f-out max-h-[350px] overflow-auto`}
+        className={`w-[100%] lg:w-[320px] max-w-[100%] border-[#fbf1e8] border-[1px] relative lg:absolute 
+ pt-[20px] lg:pt-0 z-[2] bg-[#fff] f-out max-h-[350px] overflow-auto`}
         ref={sort_by_dropdown}
       >
         <div className="w-[100%]">
