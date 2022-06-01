@@ -46,9 +46,11 @@
     content: "";
     width: 100%;
     height: 40px;
-    /* background-color: blue; */
     top: -10px;
     left: 0px;
+}
+.checkout_inner_div {
+    height: calc(100vh - 70px);
 }
 @media (max-width: 1210px) {
     .middle_menu {
@@ -69,7 +71,6 @@
         column-gap: 6px;
     }
 } 
-
 @media (max-width: 640px) {
     .menu_right_div {
         position: absolute;

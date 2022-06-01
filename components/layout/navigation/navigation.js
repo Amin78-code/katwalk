@@ -96,7 +96,7 @@ function Navigation() {
         id="navbar"
         className="fixed top-0 w-[100%] h-[60px] bg-[#fff] px-[3%] flex justify-between items-center z-[3] drop-shadow-[0_3px_10px_rgba(0,0,0,0.1)]     lg:h-[80px]"
       >
-        <div className="max-w-[115px] pt-[8px]     sm:max-w-[125px] sm:pt-[0]">
+        <div className="max-w-[115px] pt-[8px] pl-[1px]     sm:max-w-[125px] sm:pt-[0] sm:pl-0">
           <Link href="/">
             <span className="image_container">
               <Image src={logo} className="cursor-pointer" alt="logo image" />
@@ -267,11 +267,11 @@ function Navigation() {
               onClick={() => searchDesktopToggler()}
             >
               <input
-                type="email"
-                name="email"
+                type="text"
+                name="text"
                 className={`${searchDesktopToggleClasses.join(
                   " "
-                )} work-regular px-[10px] bg-white focus:outline-none block w-f ull transition-all duration-300 w-[0] absolute right-0 top-0      sm:text-[13px] show-search-inpu t`}
+                )} work-regular text-[#898b92] px-[10px] bg-white focus:outline-none block w-f ull transition-all duration-300 w-[0] absolute right-0 top-0      sm:text-[13px] show-search-inpu t`}
               />
               {/* <IoSearchOutline className="text-[20px] cursor-pointer relative z-4" /> */}
               <div className="my-icon search w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-24px_top_-445px]"></div>
@@ -362,8 +362,10 @@ function Navigation() {
               onClick={() => cartToggler()}
               className="text-[20px] cursor-pointer block     lg:hidden"
             /> */}
-            <div className="my-icon bag w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-10px_top_-151px] block     lg:hidden"
-            onClick={() => cartToggler()}></div>
+            <div
+              className="my-icon bag w-[21px] h-[19px] cursor-pointer relative z-4 bgAllIcon bg-[left_-10px_top_-151px] block     lg:hidden"
+              onClick={() => cartToggler()}
+            ></div>
             <span className="work-regular text-[12px] ml-[7px] pt-[3px]">
               1
             </span>
@@ -410,10 +412,6 @@ function Navigation() {
           <div
             className={`menu_overlay absolute top-0 left-0 w-[100%] h-[100%] bg-[#00000080] opacity-0`}
           ></div>
-          {/* <AiOutlineClose
-            onClick={() => navigationToggler()}
-            className="text-[26px] text-[#fff] absolute top-[15px] right-[20px]"
-          /> */}
           <div
             className="w-[21px] h-[19px] cursor-pointer bgAllIcon  absolute top-[15px] right-[25px] bg-[left_-3px_top_-37px]"
             onClick={() => navigationToggler()}
@@ -422,16 +420,13 @@ function Navigation() {
             className={`mob_menu_black_div h-[100%] bg-[#000000bf] px-[20px] py-[20px] absolute translate-x-[-100%]`}
           >
             <div className="flex justify-end border-b-[1px] border-[#fff]">
-              {/* <IoSearchOutline className="text-[22px] text-[#fff] mx-[10px] mb-[15px]" /> */}
-              <div className="my-icon search w-[21px] h-[24px] cursor-pointer relative z-4 bgAllIcon bg-[left_-64px_top_-442px] mx-[3px] mb-[18px] mt-[-3px]"></div>
-              {/* <IoHeartOutline className="text-[22px] text-[#fff] mx-[10px] mb-[15px]" /> */}
+              <div className="my-icon search w-[21px] h-[24px] cursor-pointer relative z-4 bgAllIcon bg-[left_-64px_top_-442px] mb-[18px] mt-[-3px]"></div>
               <div
-                className="my-icon heart w-[21px] h-[24px] cursor-pointer relative z-4 bgAllIcon bg-[left_-83px_top_-117px] mx-[3px] mb-[18px] mt-[-3px]"
+                className="my-icon heart w-[21px] h-[24px] cursor-pointer relative z-4 bgAllIcon bg-[left_-83px_top_-117px] mx-[18px] mb-[18px] mt-[-3px]"
                 onClick={() => cartToggler()}
               ></div>
-              {/* <IoPersonOutline className="text-[22px] text-[#fff] mx-[10px] mb-[15px]" /> */}
               <div
-                className="my-icon user w-[21px] h-[24px] cursor-pointer relative z-4 bgAllIcon bg-[left_-41px_top_-118px] mx-[3px] mb-[18px] mt-[-3px]"
+                className="my-icon user w-[21px] h-[24px] cursor-pointer relative z-4 bgAllIcon bg-[left_-41px_top_-118px] mb-[18px] mt-[-3px]"
                 onClick={() => cartToggler()}
               ></div>
             </div>
@@ -455,7 +450,7 @@ function Navigation() {
                   <ul
                     className={`${styleClasses.join(
                       " "
-                    )} overflow-hidden bg-[#c53a19a6] mx-[-20px] mt-[-1px] `}
+                    )} overflow-hidden taPoint6 bg-[#c53a19a6] mx-[-20px] mt-[-1px] `}
                   >
                     <li>
                       <Link href="/shop">
@@ -519,7 +514,7 @@ function Navigation() {
                   <ul
                     className={`${occasionsClasses.join(
                       " "
-                    )} overflow-hidden bg-[#c53a19a6] mx-[-20px] mt-[-1px]`}
+                    )} overflow-hidden taPoint6 bg-[#c53a19a6] mx-[-20px] mt-[-1px]`}
                   >
                     <li>
                       <Link href="/shop">
@@ -546,17 +541,16 @@ function Navigation() {
                 </li>
                 <li>
                   <a
-                   onClick={() => shopallDropdown()}
+                    onClick={() => shopallDropdown()}
                     className="work-regular flex justify-between text-[#ffffff80] text-[13px] py-[13px] block border-b-[1px] border-[#505050] uppercase"
                   >
-                   <Link href="/shop">
-                   SHOP ALL</Link>
+                    <Link href="/shop">SHOP ALL</Link>
                     <IoChevronDown className="text-[#ffffff80] mr-[10px]" />
                   </a>
                   <ul
                     className={`${shopAllClasses.join(
                       " "
-                    )} overflow-hidden bg-[#c53a19a6] mx-[-20px] mt-[-1px]`}
+                    )} overflow-hidden taPoint6 bg-[#c53a19a6] mx-[-20px] mt-[-1px]`}
                   >
                     <li>
                       <Link href="/shop">
@@ -671,7 +665,9 @@ function Navigation() {
               </div>
             </div>
 
-            <div className="flex flex-col flex-col justify-between h-[89vh]    hidd en">
+            <div
+              className={`${styles.checkout_inner_div} flex flex-col flex-col justify-between    hidd en`}
+            >
               <div className="flex justify-between pt-[20px] pb-[45px]">
                 <div className="max-w-[30%] max-h-[70px] px-[5px]">
                   <span className="image_container">
@@ -707,8 +703,8 @@ function Navigation() {
                     SAR 1,030
                   </p>
                 </div>
-                <button className="w-[100%] text-[14px] text-[#fff] uppercase bg-[#000] px-[10px] py-[10px]">
-                  checkout
+                <button className="add-to-bag-btn relative overflow-hidden ffr w-[100%] text-[0.875rem] text-[#fff] tracking-[0.5px] uppercase bg-[#000] px-[10px] py-[10px]">
+                  <span className="relative z-[5]">checkout</span>
                 </button>
               </div>
             </div>
@@ -723,24 +719,19 @@ function Navigation() {
           )} fixed top-0 left-0 w-[100%] h-[100vh]`}
         >
           <div
-            className={`menu_overlay absolute top-0 left-0 w-[100%] h-[100%] bg-[#fff] px-[20px] pt-[110px] opacity-0`}
+            className={`menu_overlay absolute top-0 left-0 w-[100%] h-[100%] bg-[#fff] px-[20px] pt-[95px] opacity-0`}
           >
-            {/* <h1>dsaf</h1> */}
             <label className="block">
               <input
-                type="email"
-                name="email"
-                className="work-regular mt-1 px-[10px] py-[5px] bg-white border-b-[1px]  placeholder-slate-400 focus:outline-none block w-full sm:text-[13px]"
+                type="text"
+                name="text"
+                className="work-regular text-[#1b1b28] mt-1 px-[10px] py-[4px] bg-white border-b-[1px] placeholder-slate-400 focus:outline-none block w-full text-[13px] placeholder:text-[#1b1b28]"
                 placeholder="Search"
               />
             </label>
           </div>
-          {/* <AiOutlineClose
-            onClick={() => searchToggler()}
-            className="text-[26px] text-[#000] absolute top-[15px] right-[20px]"
-          /> */}
           <div
-            className="w-[21px] h-[19px] cursor-pointer bgAllIcon  absolute top-[15px] right-[25px] bg-[left_-22px_top_-37px]"
+            className="w-[21px] h-[19px] cursor-pointer bgAllIcon  absolute top-[15px] right-[10px] bg-[left_-22px_top_-37px]"
             onClick={() => searchToggler()}
           ></div>
         </div>
